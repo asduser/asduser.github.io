@@ -1,0 +1,65 @@
+﻿### Site info:
+title: ASD Blog
+tagline: Another Software Developer
+author: ASD
+description: "ASD blog - just do your best." # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
+keywords: "Software, developement, ASD blog, csharp, javascript, asp.net"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://robot220.github.io" # the base hostname & protocol for your site
+locale: en_US
+
+### Personal info and site tools info:
+#twitter_username: asduser 
+github_username:  asduser
+#disqus_shortname: asduser
+favicon:     "/images/3066.png"
+aboutme: "In theory, theory and practice are the same. In practice, they’re not." # these are shown on aboutme-sidebar.
+aboutme_photo: "/images/blog_logo_sidebar.png"
+
+
+### Site setting:
+ShowContactInfo: "False" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
+default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
+default_locale: "en" # blog sidebar language set, only include: English(en) and Chinese (cn)
+
+locales:
+    en:
+      Aboutme: "About Me"
+      Archives: "Archives"
+      Blogroll: "Blogroll"
+      Categories: "Categories"
+      Copyright_Notice: "Copyright Notice"
+      Recent_Posts: "Recent Posts"
+      Tags: "Tags"
+      Previous: "Older"
+      Next: "Newer"
+      PostedInCategories: "Posted in"
+      Taggedwith: "and tagged"  
+      PostDate: "on "
+    cn:
+      Aboutme: "关于我"
+      Archives: "存档"
+      Blogroll: "良师益友"        
+      Categories: "分类目录"    
+      Copyright_Notice: "版权声明"
+      Recent_Posts: "近期文章"
+      Tags: "标签" 
+      Previous: "前一页"
+      Next: "后一页"
+      PostedInCategories: "目录:"   
+      Taggedwith: "| 标签:"
+      PostDate: "| 发表时间: "
+
+
+### Build settings
+markdown: kramdown
+highlighter: pygments
+paginate: 2
+excerpt_separator: <!--more-->
+
+sass:
+  style: :expanded
+
+gems:
+  - jekyll-sitemap
+  - jekyll-paginate

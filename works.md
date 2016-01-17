@@ -9,6 +9,8 @@ On this page I share my programs, scripts or helpful solutions with you, that he
 
 All the same, each of the described programs on this page was written just by myself.
 
+Of course, some of the presented programs have been written only for fun, but each of them has a specific part of code, which may be helpful\interesting for somebody at the moment.
+
 I think a decision of separating the inventions into appropriate groups and categories will be a helpful solution to find specific code faster.
 <hr/>
 
@@ -54,11 +56,23 @@ I think a decision of separating the inventions into appropriate groups and cate
 
 <h2 id="js" name="js" class="works-category"> JavaScript </h2>
 
+<div align="right" class="project-header"><span class="project-title"># webApi manager (UI)</span></div>
+<div class="project-content"><p></p>
+<blockquote>
+<p><u>Technology:</u> Angular.js. </p> 
+<b>Github</b>: <a href="https://github.com/asduser/webApi-angularjs" target="_blank">open repository</a>
+<p><b>Web-url</b>: <a href="http://asduser.github.io/webApi-angularjs/" target="_blank">home page</a></p>
+</blockquote>
+<div class="project-img"> <img src="images/previews/webApi_ui_angularjs.png" /> </div>
+<p><u>Description:</u> webApi client-side manager with a custom request optimizations to simplification the interconnection between client and server.</p>
+<div class="clear"></div>
+</div>
+
 <div align="right" class="project-header"><span class="project-title"># UI Local DB</span></div>
 <div class="project-content"><p></p>
 <blockquote>
 <p><u>Technology:</u> Angular.js </p> 
-<p><b>Github</b>: <a href="https://github.com/asduser/angularjs-simple-game" target="_blank">open repository</a></p>
+<p><b>Github</b>: <a href="https://github.com/asduser/ui-local-db" target="_blank">open repository</a></p>
 <p><b>Web-url</b>: <a href="http://asduser.github.io/ui-local-db/" target="_blank">home page</a></p>
 </blockquote>
 <div class="project-img"> <img src="images/previews/uilocaldb.png" /> </div>
@@ -122,6 +136,26 @@ I think a decision of separating the inventions into appropriate groups and cate
 <p><u>Description:</u> simple game on Javascript when your primary goal is on finding two equal items for some time. </p>
 <p> Each result will be saved into the statistic table during current session. </p>
 <p> It was developed on the early stage framework studying, as a consequence the final code could be more effective and elegant :) </p>
+<div class="clear"></div>
+</div>
+
+</div>
+
+
+
+
+<div id="csharp-page-content" data-role="collapsible" class="group-block">
+<h2 id="csharp" name="csharp" class="works-category"> C# .NET </h2>
+
+<div align="right" class="project-header"><span class="project-title"># CRUD-Authorize-App</span></div>
+<div class="project-content"><p></p>
+<blockquote>
+<p><u>Technology:</u> Angular.js. </p> 
+<b>Github</b>: <a href="https://github.com/asduser/CRUD-Authorize-App" target="_blank">open repository</a>
+</blockquote>
+<div class="project-img"> <img src="https://github.com/asduser/CRUD-Authorize-App/raw/master/previews/asp_net_proj.png" /> </div>
+<p><u>Description:</u> My first project on ASP.NET MVC to provide CRUD functionality into the HTML-tables. </p> 
+<p>Also there are implemented a simple system of user authentication (ASP.NET Identity).</p>
 <div class="clear"></div>
 </div>
 

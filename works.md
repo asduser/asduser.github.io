@@ -56,6 +56,18 @@ I think a decision of separating the inventions into appropriate groups and cate
 
 <h2 id="js" name="js" class="works-category"> JavaScript </h2>
 
+<div align="right" class="project-header"><span class="project-title"># Storage Manager (UI)</span></div>
+<div class="project-content"><p></p>
+<blockquote>
+<p><u>Technology:</u> Angular.js. </p> 
+<b>Github</b>: <a href="https://github.com/asduser/storage-manager-anguarljs" target="_blank">open repository</a>
+</blockquote>
+<div class="project-img"> <img src="images/previews/webApi_ui_angularjs.png" /> </div>
+<p><u>Description:</u> specific scalable tool to manage the saved data on client-side (localStorage, cookies, sessionStorage, webSQL etc.)</p>
+<p> It will be helpful for you if application has the often changing local data. </p>
+<div class="clear"></div>
+</div>
+
 <div align="right" class="project-header"><span class="project-title"># webApi manager (UI)</span></div>
 <div class="project-content"><p></p>
 <blockquote>
@@ -150,12 +162,24 @@ I think a decision of separating the inventions into appropriate groups and cate
 <div align="right" class="project-header"><span class="project-title"># CRUD-Authorize-App</span></div>
 <div class="project-content"><p></p>
 <blockquote>
-<p><u>Technology:</u> Angular.js. </p> 
+<p><u>Technology:</u> ASP.NET MVC, EF, JS. </p> 
 <b>Github</b>: <a href="https://github.com/asduser/CRUD-Authorize-App" target="_blank">open repository</a>
 </blockquote>
 <div class="project-img"> <img src="https://github.com/asduser/CRUD-Authorize-App/raw/master/previews/asp_net_proj.png" /> </div>
 <p><u>Description:</u> My first project on ASP.NET MVC to provide CRUD functionality into the HTML-tables. </p> 
 <p>Also there are implemented a simple system of user authentication (ASP.NET Identity).</p>
+<div class="clear"></div>
+</div>
+
+<div align="right" class="project-header"><span class="project-title"># Signalr ASP.NET Chat</span></div>
+<div class="project-content"><p></p>
+<blockquote>
+<p><u>Technology:</u> ASP.NET MVC, EF, SignalR, JS. </p> 
+<b>Github</b>: <a href="https://github.com/asduser/signalr-asp-chat" target="_blank">open repository</a>
+</blockquote>
+<div class="project-img"> <img src="images/previews/webApi_ui_angularjs.png" /> </div>
+<p><u>Description:</u> First familiarization with SignalR and using it with ASP.NET MVC. </p> 
+<p>As a result - fast and scalable chat, which may be changed depend on your preferences.</p>
 <div class="clear"></div>
 </div>
 

@@ -1,11 +1,11 @@
 ﻿### Site info:
-title: ASD Blog
+title: ASD
 tagline: Another Software Developer
 author: ASD
 description: "ASD blog - just do your best." # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: "Software, developement, ASD blog, csharp, javascript, asp.net"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://robot220.github.io" # the base hostname & protocol for your site
+url: "http://asduser.github.io" # the base hostname & protocol for your site
 locale: en_US
 
 ### Personal info and site tools info:

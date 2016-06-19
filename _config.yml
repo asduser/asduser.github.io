@@ -4,7 +4,7 @@ url: "http://asduser.github.io"    # the protocol and hostname of your site
 baseurl: ""
 #timezone: Asia/Chongqing
 description: >
-  One or more sentences introducing this blog.
+  Network Development: JavaScript, TypeScript, Node.js, C# .NET and C++.
 
 # Your information
 # email: your_email@example.com

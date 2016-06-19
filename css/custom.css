@@ -1,19 +1,23 @@
+/* Main modifications */
+.page-content {
+  min-height:750px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;  
+  padding:50px 0;    
+  width:100%;
+  text-align: center;
+}
+
+/* Common jquery-ui overrides */
 .ui-accordion div.ui-accordion-content {
 	height: auto !important;
 }
 
+/* Works Page */
 .project-content p {
     font-size: 17px;
     font-style: italic;
 }
-
-/* .footer {
-	position: fixed;
-  	left: 0;
-  	bottom: 0;
-  	width:100%;
-  	padding:0;
-  	margin:0;
-  	height:50px;
-  	text-align: center;
-} */

@@ -4,7 +4,8 @@
   <p>{{ site.profile }}</p>
   <p class="contact">
     {% if site.github_username %}
-    <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+    <!-- <a href="https://github.com/{{ site.github_username }}">GitHub</a> -->
+    <iframe src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
     {% endif %}
     {% if site.twitter_username %}
     <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
@@ -24,6 +25,6 @@
   </ul>
 </div>
 
-<div class="col-box post-toc hide">
+<div class="col-box post-toc hide">  
   <div class="col-box-title">TOC</div>
 </div>

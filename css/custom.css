@@ -5,6 +5,9 @@ body {
 .page-content {
   min-height:750px;
 }
+.page-content .descrip {
+  color: #ababab;
+}
 .footer {
   padding: 50px 0;
 }

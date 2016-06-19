@@ -23,7 +23,7 @@ I think a decision of separating the inventions into appropriate groups and cate
 		<p><u>Technology:</u> batch-scripting. </p> 
 		<p><b>Github</b>: <a href="https://github.com/asduser/bat-scripts-kit#easy-backup" target="_blank">open repository</a></p>
 		</blockquote>
-		<p><u>Description:</u>  simple tool to create folders\files backup inside your PC. It may be really helpful when you often need copy a specific folder\files but you dont want do it manually due to time wasting. </p>
+		<p class="descrip"><u>Description:</u>  simple tool to create folders\files backup inside your PC. It may be really helpful when you often need copy a specific folder\files but you dont want do it manually due to time wasting. </p>
 		<div class="clear"></div>
 	</div>
 
@@ -33,7 +33,7 @@ I think a decision of separating the inventions into appropriate groups and cate
 		<p><u>Technology:</u> Windows Script Host, batch-scripting. </p> 
 		<p><b>Github</b>: <a href="https://github.com/asduser/wsh-logs-cleaner" target="_blank">open repository</a></p>
 		</blockquote>
-		<p><u>Description:</u> fast utility on WSH in order to clear logs after scheduled system or user operations. </p>
+		<p class="descrip"><u>Description:</u> fast utility on WSH in order to clear logs after scheduled system or user operations. </p>
 		<div class="clear"></div>
 	</div>
 
@@ -43,7 +43,7 @@ I think a decision of separating the inventions into appropriate groups and cate
 		<p><u>Technology:</u> Windows Script Host, batch-scripting. </p> 
 		<p><b>Github</b>: <a href="https://github.com/asduser/wsh-password-generator" target="_blank">open repository</a></p>
 		</blockquote>
-		<p><u>Description:</u>  simple, nevertheless, flexible tool in configuration to generate passwords. The final result is written into the corresponding file. You may adjust a new options or edit existing in a special wsh file. </p>
+		<p class="descrip"><u>Description:</u>  simple, nevertheless, flexible tool in configuration to generate passwords. The final result is written into the corresponding file. You may adjust a new options or edit existing in a special wsh file. </p>
 		<div class="clear"></div>
 	</div>
 

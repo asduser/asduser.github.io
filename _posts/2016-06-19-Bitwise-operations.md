@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Betwise operations"
-permalink: /archivers/betwise-operations
+title: "Bitwise operations"
+permalink: /archivers/bitwise-operations
 categories: code
 date: 2016-06-18 16:25:06 -0700
 ---
@@ -127,9 +127,9 @@ Console.WriteLine(Convert.ToInt32("100", 2)); // convert number into metric syst
 Console.WriteLine(1 << 1 << 1 == Convert.ToInt32("100", 2)); // compare results
 ```
 
-### Betwise AND (&).
+### Bitwise AND (&).
 
-Now let's talk about common expression task - betwise and. According to code above, there is no a new principles, just only another representational behaviour.
+Now let's talk about common expression task - bitwise and. According to code above, there is no a new principles, just only another representational behaviour.
 
 Supposably, we want to use and operator to numbers 5 and 7. So, here is a bits transformation:
 
@@ -154,7 +154,7 @@ console.log( parseInt(101, 2) & parseInt(111, 2) ); // -> 5
 console.log( parseInt(1001, 2) & parseInt(101, 2) ); // -> 1
 ```
 
-### Betwise OR (|).
+### Bitwise OR (|).
 
 In this case all combinations return 1 except 0 & 0. Example:
 
@@ -173,7 +173,7 @@ Metric system | Position 3 | Position 2 | Position 1
 7 | 1 | 1 | 1
 7 | 1 | 1 | 1
 
-### Betwise Exclusive OR (^).
+### Bitwise Exclusive OR (^).
 
 Only different signs return "1", so there are [0 - 1], [1 - 0] combinations, in other cases will returned "0".
 
@@ -182,5 +182,24 @@ Metric system | Position 3 | Position 2 | Position 1
 5 | 1 | 0 | 1
 7 | 1 | 1 | 1
 2 | 0 | 1 | 0
+
+### Bitwise Not (~).
+
+Replaces each sign to opposite, [0 - 1], [1 - 0].
+
+Sign | Result
+------------ | -------------
+1 | 0
+0 | 1
+
+### Bitwise Shift Left (<<).
+
+This operation is almost equals to the multiplication an existing number by 2. In other words, if we have a number 24 and we have to change it using left shift for 2 signs, will be enough use 2 times multiplication it by 2.
+
+> *24 << 2* -> 96.
+
+### Conclusion.
+
+We have discussed about bitwise shift in programming languages. It happens when you work with computer memory, use high-load performance application or integrate your scenarios into the low-level programming.
 
 *To be continued...*

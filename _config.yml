@@ -1,65 +1,47 @@
-﻿### Site info:
+# Site settings
 title: ASD
-tagline: Another Software Developer
-author: ASD
-description: "ASD blog - just do your best." # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
-keywords: "Software, developement, ASD blog, csharp, javascript, asp.net"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://asduser.github.io" # the base hostname & protocol for your site
-locale: en_US
+url: "http://asduser.github.io"    # the protocol and hostname of your site
+baseurl: ""
+#timezone: Asia/Chongqing
+description: >
+  One or more sentences introducing this blog.
 
-### Personal info and site tools info:
-#twitter_username: asduser 
+# Your information
+# email: your_email@example.com
+author: Another Software Developer
+# avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
+avatar: "http://asduser.github.io/images/blog_logo_sidebar.png"
+profile: "In theory, theory and practice are the same. In practice, they’re not."
+#twitter_username: twitter_username
 github_username:  asduser
-#disqus_shortname: asduser
-favicon:     "/images/3066.png"
-aboutme: "In theory, theory and practice are the same. In practice, they’re not." # these are shown on aboutme-sidebar.
-aboutme_photo: "/images/blog_logo_sidebar.png"
 
+# Comment Service (Disqus or 多说)
+#  choose one and un-comment the line to active it
+#disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
+#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
-### Site setting:
-ShowContactInfo: "False" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
-default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
-default_locale: "en" # blog sidebar language set, only include: English(en) and Chinese (cn)
-
-locales:
-    en:
-      Aboutme: "About Me"
-      Archives: "Archives"
-      Blogroll: "Blogroll"
-      Categories: "Categories"
-      Copyright_Notice: "Copyright Notice"
-      Recent_Posts: "Recent Posts"
-      Tags: "Tags"
-      Previous: "Older"
-      Next: "Newer"
-      PostedInCategories: "Posted in"
-      Taggedwith: "and tagged"  
-      PostDate: "on "
-    cn:
-      Aboutme: "关于我"
-      Archives: "存档"
-      Blogroll: "良师益友"        
-      Categories: "分类目录"    
-      Copyright_Notice: "版权声明"
-      Recent_Posts: "近期文章"
-      Tags: "标签" 
-      Previous: "前一页"
-      Next: "后一页"
-      PostedInCategories: "目录:"   
-      Taggedwith: "| 标签:"
-      PostDate: "| 发表时间: "
-
-
-### Build settings
-markdown: kramdown
-highlighter: pygments
-paginate: 2
-excerpt_separator: <!--more-->
-
-sass:
-  style: :expanded
-
+permalink: /archivers/:title
 gems:
-  - jekyll-sitemap
-  - jekyll-paginate
+ - jekyll-paginate
+ - jekyll-gist
+ - jemoji
+
+# Build settings
+paginate: 5
+paginate_path: "page:num"
+
+highlighter: rouge
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+  # syntax_highlighter_opts:    
+  #   span:
+  #     line_numbers: false
+  #   block:
+  #     line_numbers: true
+  #     start_line: 1
+
+favicon: "/images/3066.png"

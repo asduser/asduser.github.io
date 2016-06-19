@@ -1,1 +1,0 @@
-Simple two-column blog.

@@ -3,16 +3,41 @@ layout: default
 ---
 
 <div class="home">
+  <a class="rss-link" href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS Feed</a>
+  <h1 class="page-heading">Articles</h1>
 
-<p>Hello to everybody! You are on the site of another software developer.</p>
+  <ul class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+        
+        <div class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
 
-<p>I have decided to use this engine due to performance, ability of deep customization and, furthermore, it has alot of public modules.</p>
-
-<p>The primary goal of creating this site is a desire to keep my own achievements, in a turn this site is suitable to solve the corresponding tasks!</p>
-
-At the moment, I suggest you to visit the pages of <a href="/works">"projects"</a> and <a href="/about">"about"</a>.
+        <div class="post-excerpt">
+          {{ post.excerpt }}
+          <p>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">Read More &raquo;</a>
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+  
+  <!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous">PREV</a>
+  {% else %}
+    <span class="previous">PREV</span>
+  {% endif %}
+  <span class="page_number ">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next">NEXT</a>
+  {% else %}
+    <span class="next ">NEXT</span>
+  {% endif %}
 </div>
 
-<!-- <article class="post-content" itemprop="articleBody">
-      {{ post.content }}
-    </article> <hr /> -->
+</div>

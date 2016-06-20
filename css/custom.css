@@ -5,9 +5,6 @@ body {
 .page-content {
   min-height:750px;
 }
-.page-content .descrip {
-  color: #ababab;
-}
 .footer {
   padding: 50px 0;
 }
@@ -27,7 +24,11 @@ body {
 }
 
 /* Works Page */
-.project-content p {
-    font-size: 17px;
-    font-style: italic;
-}
+.project-header img { height:25px; width:30px; margin:3px 0 0 0; }
+.project-header .project-created { color:#036; font-size: 13px; font-style: italic; }
+.project-content a { color:#2c8def !important; }
+.project-content .descrip { font-size: 16px; font-style: italic; color: #ababab; }
+.project-content .project-tech-list { text-align: right; font-size: 13px; }
+.project-content .project-demo-link { text-align: right; color:#2c8def !important; font-size:13px; }
+.project-content .project-social-area { text-align: left; }
+.project-list .project-title { font-size: 22px; font-weight: bold; }

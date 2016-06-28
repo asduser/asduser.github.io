@@ -3,7 +3,7 @@ layout: post
 title: "Bitwise operations"
 permalink: /archivers/bitwise-operations
 categories: code
-date: 2016-06-18 16:25:06 -0700
+date: 2016-06-15 12:00:00
 ---
 
 In this article we're going to talk about bitwise operations in programming. It's a very powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.

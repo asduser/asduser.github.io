@@ -32,3 +32,6 @@ body {
 .project-content .project-demo-link { text-align: right; color:#2c8def !important; font-size:13px; }
 .project-content .project-social-area { text-align: left; }
 .project-list .project-title { font-size: 22px; font-weight: bold; }
+
+/* Post styles */
+.highlighter-file-title { font-size:13px; color:#999; font-style: italic; margin:10px 0 10px;}

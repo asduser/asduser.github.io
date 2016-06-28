@@ -3,7 +3,7 @@ layout: post
 title: Typescript - classes inheritance
 permalink: /typescript/classes-inheritance-part1
 categories: typescript
-date: 2016-06-19 12:00:00
+date: 2016-06-27 12:00:00
 ---
 
 In this example we're going to observe how does classes implement the inheritance behaviour in TypeScript language. It is similiar to C# inheritance where you can't apply multiple inheritance to one class by default. 

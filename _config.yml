@@ -11,7 +11,8 @@ description: >
 author: Another Software Developer
 # avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
 avatar: "http://asduser.github.io/images/blog_logo_sidebar.png"
-profile: "In theory, theory and practice are the same. In practice, they’re not."
+# profile: "In theory, theory and practice are the same. In practice, they’re not."
+profile: "Network Development: JavaScript, TypeScript, Node.js, C# .NET and C++."
 #twitter_username: twitter_username
 github_username:  asduser
 

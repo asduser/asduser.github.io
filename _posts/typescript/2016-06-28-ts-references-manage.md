@@ -110,16 +110,38 @@ It is not the only one correct methodology, no. But in cases, when you use not a
 
 ### Compile sources
 
-And to get a final result we have to compile our *.ts files into *.js files. According to main advices on official TypeScript site, the simpliest way to do this - is using of ** tsc ** compiler.
+And to get a final result we have to compile our *.ts files into *.js files. According to main advices on official TypeScript site, the simpliest way to do this - is using of **tsc** compiler.
 
-1. Install node.js.
-2. Open terminal -> npm i typescript -g (install typescript globally on your PC).
-3. To use TS compiler use command *tsc* in terminal with an appropriate flags.
+1. Install *node.js*.
+2. Open terminal -> **npm i typescript -g** (install typescript globally on your PC).
+3. To use TS compiler use command **tsc** in terminal with an appropriate flags.
 
 In our case we use the following command:
 
 ```bash
 tsc --out app1/output.js app1/_all.ts
 ```
+
+### Grouping references
+
+So, we discussed about working with one reference in your project. If you want to use a lot of modules, classes, interfaces and properly separate them from each other, just use another trick - reference grouping.
+
+> The main idea is categorize all existing references by suitable types and then include them into a special reference file.
+
+In the beginning, let's image we develop a specific *Dispatcher* module to work with user's notification in our application.
+
+<div align="right" class="highlighter-file-title">Project structure</div>
+![project architecture](/images/post/ts-modules-project-structure2.png)
+
+It's just sample directories and files when the main purpose was to show you how you can manage references inside your TypeScript project. 
+
+To see, how it works, compile project (see the point above) and then open an index.html file, thereafter press F12 in your browser (open developer console).
+
+<div align="right" class="highlighter-file-title">Chrome - console output</div>
+![project architecture](/images/post/ts-modules-console-output.png)
+
+[Download an example project from github.](https://github.com/asduser/typescript-practice/tree/master/references-managing)
+
+<a href="https://github.com/asduser/typescript-practice/tree/master/references-managing" class="github-button">Open repository</a>
 
 Good luck!                                                       

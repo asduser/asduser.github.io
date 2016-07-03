@@ -7,3 +7,11 @@
 <script src="{{ "/js/easybook.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/global-initializations.js" | prepend: site.baseurl }}"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script>
+	$(document).ready(function(){
+		$("pre").each(function(){
+			$(this).addClass("prettyprint");
+		});
+	})
+</script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sons-of-obsidian" defer="defer"></script>

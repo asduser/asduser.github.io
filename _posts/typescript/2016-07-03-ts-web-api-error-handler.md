@@ -15,9 +15,9 @@ Flexible module to manage an arising Web API error messages and notify about tha
 
 ## Declare a main scrope
 
-To stat with, we need to create an individual space for our module to avoid any possible issues in the future. In this case, we'll work using a *namespace* key.
+To stat with, create an individual space for module to avoid any possible issues in the future. In this case, it will be working using a *namespace* key.
 
-Moreover, we're going to work with references injections, so our main file has the following style:
+Moreover, we're going to work with references injections, so a main file has the following style:
 
 <div align="right" class="highlighter-file-title">Core.ts</div>
 ```ts
@@ -32,7 +32,7 @@ namespace ApiErrorHandler {}
 
 ```
 
-As you see, nothing special, just declaring the main project files there. Nevertheless, we've declared **namespace ApiErrorHandler** to simplify project navigation. 
+As you see, nothing special, just declaring the main project files there. Nevertheless, there was declared **namespace ApiErrorHandler** to simplify project navigation. 
 
 You open this file, then find the line with announced namespace line and thereafter you may be aware of why it was created and which items it contains.
 

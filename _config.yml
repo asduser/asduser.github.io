@@ -4,7 +4,7 @@ url: "http://asduser.github.io"    # the protocol and hostname of your site
 baseurl: ""
 #timezone: Asia/Chongqing
 description: >
-  Network Development: JavaScript, TypeScript, Node.js, Python, Golang\C.
+  Network Development: JavaScript, TypeScript, Node.js, Python, Golang, C.
 
 # Your information
 # email: your_email@example.com
@@ -12,7 +12,7 @@ author: Another Software Developer
 # avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
 avatar: "http://asduser.github.io/images/blog_logo_sidebar.png"
 # profile: "In theory, theory and practice are the same. In practice, they’re not."
-profile: "Network Development: TypeScript, Node.js, Python, Golang\C."
+profile: "Network Development: TypeScript, Node.js, Python, Golang, C."
 #twitter_username: twitter_username
 github_username:  asduser
 

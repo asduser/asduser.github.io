@@ -1,14 +1,14 @@
 ---
 layout: post
 title: Robomongo tool for MongoDB
-permalink: /programming/nextitem-previtem-in-array
+permalink: /tools/robomongo
 categories: node.js, mongodb, tool
 date: 2016-10-25 06:30:00
 ---
 
 Not so long ago I've started use a special management tool for MongoDB - Robomongo. The main features which were interesting for me: simplicity, rapidity and flexibility. Robomongo truly can help you to solve your needs in database refactoring without a lot of unnecessary manual scenarios. 
 
-### Few words about
+## Few words about
 
 ![project architecture](http://bicortex.com/bicortex/wp-content/post_content//2014/01/MongoDB-part4-robomongo-gui.png)
 

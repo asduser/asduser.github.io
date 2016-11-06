@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* $color-link: #036; */
 body {
   margin: 0;
   font-family: "Open Sans", "Helvetica Neue", "DejaVu Sans", Arial, "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "微软雅黑", Helvetica, sans-serif;
@@ -7,7 +8,8 @@ body {
 
 a {
   text-decoration: none;
-  color: #036; }
+  /* color: #036; */
+  color: #107FEF; }
 
 a:hover, a:focus {
   text-decoration: underline;
@@ -328,6 +330,9 @@ h1, h2, h3, h4, h5, h6 {
     background: #fefefe;
     color: #000;
     text-decoration: none; }
+
+a.post-link {
+  color: #036; }
 
 @media screen and (max-width: 800px) {
   .page-content {

@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>XMPP Messaging - first experience | ASD</title>
+  <meta name="author" content="Another Software Developer">
+  
+  <meta name="description" content="XMPP messaging - how to work with web-chats and build cross-platform applications.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="XMPP Messaging - first experience"/>
+  <meta property="og:site_name" content="ASD"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/custom.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+  <script src="/js/blog/utils/common.js"></script>
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">ASD</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/works" title="Scripts, code examples, applications, services and tools.">
+			  <i class="fa fa-code"></i>Works
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/publications" title="Articles, notes on other web-resources.">
+			  <i class="fa fa-pencil-square-o"></i>Publications
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> XMPP Messaging - first experience</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	
+		<div style="margin:5px;">
+			<i class="fa fa-clock-o"></i>
+			March 26th 2017, 7:09 pm
+		</div>
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>XMPP messaging - how to work with web-chats and build cross-platform applications.</p>
+			
+		 </div> <!-- alert -->
+	  		
+
+	  <p>XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999. A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.</p>
+<a id="more"></a>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>I’ve started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.</p>
+<p>To start using XMPP over HTTP you should communicate to <a href="https://xmpp.org/about/technology-overview.html#bosh" target="_blank" rel="external">BOSH</a> - a specific over synchronous HTPP stream.</p>
+<p>Before we start talking about practical experience I’d like to share with you useful links from official sites:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/XMPP#Strengths" target="_blank" rel="external">XMPP strengths</a> </li>
+<li><a href="https://en.wikipedia.org/wiki/XMPP#Weaknesses" target="_blank" rel="external">XMPP weaknesses</a> </li>
+<li><a href="https://xmpp.org/about/faq.html" target="_blank" rel="external">XMPP official FAQ</a> .</li>
+</ul>
+<p><img src="http://xiffian.sourceforge.net/Screenshots/Screenchat.jpg" alt="xmpp sample chat room"></p>
+<h2 id="Setting-the-environment"><a href="#Setting-the-environment" class="headerlink" title="Setting the environment"></a>Setting the environment</h2><p>To start with you need to install and configure a server-side environment in according to official documentation. See list of public &amp; available servers - <a href="https://xmpp.org/software/servers.html" target="_blank" rel="external">click here</a>.</p>
+<p>The next step - necessary to determine the client technology to work with XMPP protocol. <a href="https://xmpp.org/software/clients.html" target="_blank" rel="external">See here</a> </p>
+<p>You may create a any number of chatrooms, use a private\public conference, broadcast a specific events, accept notifications, transfer images, send smiles etc. It is only a small list of actual XMPP posibilities with whom I’ve dealt.</p>
+<p>I was pleasantly surprised acknowledging an ability to work with offline messaging. You may specify a delay counter when your stanza should be delivered to your collocutor.</p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><p>The first thing is a format of XMPP messaging - XML stanzas. You may share you presence, build a different server requests but always should use XML elements in a strict respected format.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Assume, client sends request to server:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iq</span> <span class="attr">from</span>=<span class="string">'hag66@shakespeare.lit/pda'</span></span></div><div class="line">    <span class="attr">id</span>=<span class="string">'h7ns81g'</span></div><div class="line">    <span class="attr">to</span>=<span class="string">'shakespeare.lit'</span></div><div class="line">    <span class="attr">type</span>=<span class="string">'get'</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">query</span> <span class="attr">xmlns</span>=<span class="string">'http://jabber.org/protocol/disco#items'</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">iq</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>And immediately will be informed by appropriate response:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iq</span> <span class="attr">from</span>=<span class="string">'shakespeare.lit'</span></span></div><div class="line">    <span class="attr">id</span>=<span class="string">'h7ns81g'</span></div><div class="line">    <span class="attr">to</span>=<span class="string">'hag66@shakespeare.lit/pda'</span></div><div class="line">    <span class="attr">type</span>=<span class="string">'result'</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">query</span> <span class="attr">xmlns</span>=<span class="string">'http://jabber.org/protocol/disco#items'</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">jid</span>=<span class="string">'chat.shakespeare.lit'</span></span></div><div class="line">          <span class="attr">name</span>=<span class="string">'Chatroom Service'</span>/&gt;</div><div class="line">  <span class="tag">&lt;/<span class="name">query</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">iq</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>There are a lot of libraries to build a proper messages - you should just specify a list of arguments &amp; values.</p>
+<p>One of the most popular JS libraries to work with XMPP are: </p>
+<ul>
+<li><a href="https://github.com/strophe/strophejs" target="_blank" rel="external">Strophe.js</a></li>
+<li><a href="https://github.com/legastero/stanza.io" target="_blank" rel="external">Stanza.io</a>.</li>
+</ul>
+<p>I guess, it is cool, cause any developer may be sure that another one uses the same format to build requests. This approach prevents you to make prevalent mistakes or make them less and significantly save your time.</p>
+<p><img src="http://blog.armorgames.com/wp-content/uploads/2015/09/chat_room_tab2.png" alt="xmpp sample chat room"></p>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Throughout all session the client will have a list of event emitters, where each of them depends on some appropriate external event.</p>
+<p>For example, you connected to the chat-room and if there is some participant, he would be informed by special information stanza.</p>
+<p>When you leave room, write a message, join group or send invite - all this actions raise proper broadcasts. You may subscribe to person, configure chat-rooms, manage your contact list and more another cool features.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>XMPP - is a cool technology for messaging. If you need to use web-chat and be sure that it will work on cross-platform devices, the choise is clear. Of course, it not only one suitable library to broadcast messages over the browser and any person may use whatever he wants.</p>
+<p>In the next time I’ll try to share with you some cases of using XMPP. </p>
+<p>Good luck! </p>
+	  
+	</div>
+
+        
+        <h4> Categories: </h4>
+            
+        
+        <ul id="categorys" class="tag_box list-unstyled collapse in"><li style="float:left;cursor: pointer;"><a href="/categories/xmpp/">xmpp<span>1</span></a></li><li style="float:left;cursor: pointer;"><a href="/categories/xmpp/chat/">chat<span>1</span></a></li></ul>
+
+		
+		<h4> Tags: </h4>
+		
+		
+		<ul id="categorys" class="tag_box list-unstyled collapse in"><li style="float:left;cursor: pointer;"><a href="/tags/js/">js<span>3</span></a></li><li style="float:left;cursor: pointer;"><a href="/tags/xmpp/">xmpp<span>1</span></a></li><li style="float:left;cursor: pointer;"><a href="/tags/strophe-js/">strophe.js<span>1</span></a></li><li style="float:left;cursor: pointer;"><a href="/tags/stanza/">stanza<span>1</span></a></li><li style="float:left;cursor: pointer;"><a href="/tags/chat/">chat<span>1</span></a></li><li style="float:left;cursor: pointer;"><a href="/tags/web-chat/">web-chat<span>1</span></a></li></ul>
+
+
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Anterior</a></li>
+        
+
+        <li><a href="/works"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/03/22/database/robomongo-uses/" class="alignright next">Próximo<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+	<!--<div class="subscribe20">
+		<div class="inner">
+			<div class="stamp"></div>
+			<h3>Subscription</h3>
+			<p>
+				You will receive notification via e-mail about new articles, scritps, apps and tools.
+			</p>
+			<div style="display: none;" id="asd_subscribe_res"></div>
+			<form id="asd_subscribe_form" method="post" action="/">
+				<div class="submit_group">
+					<input type="text" placeholder="Enter e-mail" value="" name="asd_email">
+					<input type="submit" value="Subscribe!" id="asd_subscribe_submit" name="asd_submit">
+				</div>
+			</form>
+		</div>
+	</div>-->
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+  <h2 class="title">Comentários</h2>
+
+  
+</section>
+-->
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3 post-sidebar" id="post_meta">
+
+	<!-- date -->
+	<!--
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-03-23 00:41 
+	</div>
+	-->
+
+	<!-- categories -->
+    <!--
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/xmpp/">xmpp<span>1</span></a></li> <li><a href="/categories/xmpp/chat/">chat<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	-->
+
+	<!-- tags -->
+	<!--
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/js/">js<span>3</span></a></li> <li><a href="/tags/xmpp/">xmpp<span>1</span></a></li> <li><a href="/tags/strophe-js/">strophe.js<span>1</span></a></li> <li><a href="/tags/stanza/">stanza<span>1</span></a></li> <li><a href="/tags/chat/">chat<span>1</span></a></li> <li><a href="/tags/web-chat/">web-chat<span>1</span></a></li>
+    </ul>
+	</div>
+	-->
+
+	<!-- Info block -->
+	<!--<img width="100" src="img/blog/blog_logo_sidebar.png" />-->
+<!--<div class="sidebar-logo"></div>
+<img class="sidebar-logo" alt="" />-->
+
+<div align="center" class="info-block">
+    <div class="sidebar-logo"></div>
+
+    <p> Network Development: TypeScript, Node.js, Python, Golang, C. </p>
+
+    <iframe src="https://ghbtns.com/github-btn.html?user=asduser&type=follow&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
+
+    <div align="center" class="sidebar-user-details col-box-title">
+        <span class="repos-title">Repos: </span><span class="repos-value"> 24 </span>
+        <span class="stars-title">Stars: </span><span class="stars-value"> 50 </span>
+        <span class="forks-title">Forks: </span><span class="forks-value"> 3 </span>
+    </div>
+
+</div>
+
+	<hr/>
+
+	<!-- Recent posts -->
+	
+<div class="widget">
+  <h4>Posts recentes</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2017/03/23/xmpp-sockets/xmpp-messaging/"  title="XMPP messaging - how to work with web-chats and build cross-platform applications." ><i class="fa fa-file-o"></i>XMPP Messaging - first expe...</a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/22/database/robomongo-uses/"  title="Practical experience with Robomongo-tool for MongoDB." ><i class="fa fa-file-o"></i>Robomongo uses</a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/08/theory/bitwise-operations/"  title="Bitwise operations via C# &amp; JavaScript." ><i class="fa fa-file-o"></i>Bitwise Operations</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+	<!-- Info block -->
+	
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled links">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/asduser" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+	</ul>
+</div>
+
+
+
+	<!-- toc -->
+	<div class="meta-widget">
+		
+		<a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+		<div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Overview"><span class="toc-article-text">Overview</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Setting-the-environment"><span class="toc-article-text">Setting the environment</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Features"><span class="toc-article-text">Features</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Example"><span class="toc-article-text">Example</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Connection"><span class="toc-article-text">Connection</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+		</div>
+		
+	</div>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+	
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2017 Another Software Developer
+  
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+<script src="/js/blog/social/github-statistics.js"></script>
+<script src="/js/blog/pages/works.js"></script>
+<script src="/js/blog/sidebar/floating.js"></script>
+<script src="/js/blog/utils/common.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

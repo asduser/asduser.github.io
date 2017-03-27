@@ -48,6 +48,10 @@ figure.highlight table { width: 100%; }
     top:30%;
 }
 
+/* Theme */
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand { color: #fff; }
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover { color: #bbb; }
+
 /* Bootstrap styles */
 .alert.alert-success.description i.fa-info-circle {
     float: left;

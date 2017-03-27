@@ -1,0 +1,57 @@
+slogan: "TypeScript, Node.js, Golang, Python, C"
+
+theme: spacelab
+inverse: true
+
+menu:
+  - title: Works
+    url: works
+    intro: "Scripts, code examples, applications, services and tools."
+    icon: "fa fa-code"
+  - title: Publications
+    url: publications
+    intro: "Articles, notes on other web-resources."
+    icon: "fa fa-pencil-square-o"
+  - title: Archives
+    url: archives
+    intro: "All the articles."
+    icon: "fa fa-archive"
+  - title: About
+    url: about
+    intro: "About me."
+    icon: "fa fa-user"
+
+links:
+  - title: "My Github"
+    url: http://www.github.com/asduser
+    intro: "My Github account."
+    icon: "fa fa-github"
+
+widgets:
+- info
+#- search
+- category
+- tagcloud
+- recent_posts  
+- links
+
+rss: 
+fancybox: true
+favicon: favicon.png
+duoshuo_shortname:
+
+# Analytics
+google_analytics:
+  enable: false
+  siteid:
+baidu_tongji:
+  enable: false
+  siteid:
+
+# search
+# swiftype_key: ZP2ZSuHgipSZfRyU8uTR
+
+# share widgets
+bdshare: false
+jiathis: false
+

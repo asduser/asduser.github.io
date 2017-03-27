@@ -1,0 +1,157 @@
+/* Common jquery-ui overrides */
+.ui-accordion div.ui-accordion-content {
+    height: auto !important;
+}
+
+/* Works Page */
+/*.project-header img { height:25px; width:30px; margin:3px 0 0 0; }
+.project-header .project-created { color:#036; font-size: 13px; font-style: italic; }
+.project-content a { color:#2c8def !important; }
+.project-content .descrip { font-size: 16px; font-style: italic; color: #ababab; }
+.project-content .project-tech-list { text-align: right; font-size: 13px; }
+.project-content .project-demo-link { text-align: right; color:#2c8def !important; font-size:13px; }
+.project-content .project-social-area { text-align: left; }
+.project-list .project-title { font-size: 22px; font-weight: bold; }*/
+
+/* Github statistics */
+.repos-value, .stars-value, .forks-value {
+    font-style: italic;
+    font-weight: bold;
+    color: #48adc1;
+}
+.sidebar-logo {
+    background-image: url('../img/blog/blog_logo_sidebar@x1.png');
+    width: 80px;
+    height: 80px;
+}
+
+/* Post styles */
+.highlighter-file-title { font-size:13px; color:#999; font-style: italic; margin:10px 0 10px;}
+.prettyprint { background: #223 !important; }
+figure.highlight table { width: 100%; }
+#categorys li { font-size: 13px; }
+.post-sidebar ul.entry.list-unstyled li { font-size:14px; }
+.post-sidebar .info-block { font-size:14px; }
+.post-sidebar .links { font-size:14px; }
+
+/* Sidebar */
+.sideBar {
+    position: fixed;
+    z-index: 1000;
+}
+.sideBar.boxLeft {
+    width: 300px;
+    float:right;
+    padding: 0;
+    right:75px;
+    background-color:#eee;
+    top:30%;
+}
+
+/* Theme */
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand { color: #fff; }
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover { color: #bbb; }
+
+/* Bootstrap styles */
+.alert.alert-success.description i.fa-info-circle {
+    float: left;
+    margin: 5px 10px 0 0;
+}
+
+/* Subscriptions */
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700,700italic&subset=latin,cyrillic);
+.subscribe20 {
+    background: url("../img/design/border.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin: 0;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow:  0 1px 0 0 rgba(255, 255, 255, 0.88) inset, 0 0 1px 0 rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:  0 1px 0 0 rgba(255, 255, 255, 0.88) inset, 0 0 1px 0 rgba(0, 0, 0, 0.5);
+    box-shadow:  0 1px 0 0 rgba(255, 255, 255, 0.88) inset, 0 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+.subscribe20 .inner {
+    background: #f6f6f6;
+    font: 13px/18px Verdana,Arial,sans-serif;
+    margin: 0;
+    padding: 20px 90px 20px 30px;
+    position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.subscribe20 .stamp {
+    background: url("../img/design/stamp.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 64px;
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 88px;
+}
+.subscribe20 h3 {
+    margin-top: 0;
+    color: #283537;
+    font: bold 20px/24px "Roboto Condensed",Arial,sans-serif;
+    text-transform: uppercase;
+}
+.subscribe20 #asd_subscribe_form {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+}
+.subscribe20 p {margin: 0 0 10px;}
+.subscribe20 .submit_group{position: relative;}
+.subscribe20 input[name="asd_email"] {
+    box-shadow: 0 0 5px 0 #bbbbbb inset, 0 1px 0 0 #ffffff;
+    font: normal 18px/31px "Roboto Condensed",Arial;
+    width: 385px;
+    background: linear-gradient(to bottom, #ffffff 0px, #e7e7e7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    color: #283537;
+    margin: 0;
+    padding: 4px 6px;
+    position: relative;
+    text-decoration: none;
+    outline: 0 none;
+}
+.subscribe20 input[name="asd_submit"] {
+    margin-top: -14px;
+    padding: 4px 10px;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    border: 0 none;
+    color: #ffffff;
+    font: normal 16px/18px "Roboto Condensed",sans-serif;
+    text-shadow: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #F64214;
+    background: -moz-linear-gradient(top,#f64214 0,#cb3914 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#F64214),color-stop(100%,#CB3914));
+    background: -webkit-linear-gradient(top,#F64214 0,#CB3914 100%);
+    background: -o-linear-gradient(top,#f64214 0,#cb3914 100%);
+    background: -ms-linear-gradient(top,#f64214 0,#cb3914 100%);
+    background: linear-gradient(to bottom,#F64214 0,#CB3914 100%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing:  border-box;
+    -moz-box-sizing:  border-box;
+    box-sizing:  border-box;
+}
+.subscribe20 input[name="asd_submit"]:hover{
+    background: #CB3914;
+    background: -moz-linear-gradient(top,#cb3914 0,#f64214 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#CB3914),color-stop(100%,#F64214));
+    background: -webkit-linear-gradient(top,#CB3914 0,#F64214 100%);
+    background: -o-linear-gradient(top,#cb3914 0,#f64214 100%);
+    background: -ms-linear-gradient(top,#cb3914 0,#f64214 100%);
+    background: linear-gradient(to bottom,#CB3914 0,#F64214 100%);
+}
+.subscribe20 input[name="asd_submit"]:active{background: #cb3914;}

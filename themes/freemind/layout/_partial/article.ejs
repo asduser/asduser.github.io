@@ -1,0 +1,111 @@
+<%- partial('post/title', {item: item, index: false}) %>
+
+<% if (item.shadow ) { %>
+   <style type="text/css">
+           img, video {
+                -webkit-box-shadow:0 0 10px rgba(0, 0, 0, .5);  
+                -moz-box-shadow:0 0 10px rgba(0, 0, 0, .5);  
+                box-shadow:0 0 10px rgba(0, 0, 0, .5);  
+           }
+   </style>
+<% } %>
+
+
+<div class="row <% if (post) { %>post<% } else { %>page<% } %>">
+	<!-- cols -->
+	<% if (post) { %>
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	<% } else { %>
+	<div class="col-md-12">
+	<% } %>
+
+	<% if (post) { %>
+		<div style="margin:5px;">
+			<i class="fa fa-clock-o"></i>
+			<%- full_date(new Date(), 'MMMM Do YYYY, h:mm a') %>
+		</div>
+	<% } %>
+
+	<!-- content -->
+	<div class="mypage">		
+	  <% if (item.description) { %>
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <%- markdown(item.description) %>			
+		 </div> <!-- alert -->
+	  <% } %>		
+
+	  <%- item.content %>	  
+	</div>
+
+        <% if (post && item.categories && item.categories.length) { %>
+        <h4> Categories: </h4>
+            <%
+                var catsList = '<ul id="categorys" class="tag_box list-unstyled collapse in">';
+                var catsItems = [];
+                item.categories.forEach(function(cat){
+                    catsItems.push('<li style="float:left;cursor: pointer;"><a href="' + config.root + cat.path + '">'+ cat.name +'<span>'+ cat.length +'</span></a></li>');
+                });
+                catsList += catsItems.join('');
+                catsList += '</ul>';
+            %>
+        <% } %>
+        <%- catsList %>
+
+		<% if (post && item.tags && item.tags.length) { %>
+		<h4> Tags: </h4>
+		<%
+			var tagsList = '<ul id="categorys" class="tag_box list-unstyled collapse in">';
+			var tagsItems = [];
+			item.tags.forEach(function(tag){
+				tagsItems.push('<li style="float:left;cursor: pointer;"><a href="' + config.root + tag.path + '">'+ tag.name +'<span>'+ tag.length +'</span></a></li>');
+			});
+			tagsList += tagsItems.join('');
+			tagsList += '</ul>';
+		%>
+		<% } %>
+		<%- tagsList %>
+
+
+
+	<div>
+  	<center>
+	<%- partial('post/pagination', {page: item}) %>
+    </center>
+	</div>
+
+	<!--<div class="subscribe20">
+		<div class="inner">
+			<div class="stamp"></div>
+			<h3>Subscription</h3>
+			<p>
+				You will receive notification via e-mail about new articles, scritps, apps and tools.
+			</p>
+			<div style="display: none;" id="asd_subscribe_res"></div>
+			<form id="asd_subscribe_form" method="post" action="/">
+				<div class="submit_group">
+					<input type="text" placeholder="Enter e-mail" value="" name="asd_email">
+					<input type="submit" value="Subscribe!" id="asd_subscribe_submit" name="asd_submit">
+				</div>
+			</form>
+		</div>
+	</div>-->
+
+    <!-- share -->
+    <% if (post) { %>
+        <%- partial('post/bdshare', {page: item}) %>
+        <%- partial('post/jiathis', {page: item}) %>
+    <% } %>
+	
+	<!-- comment -->
+	<!--<%- partial('post/comment', {page: item}) %>-->
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	<% if (post) { %>
+	<div id="side_meta">
+		<%- partial('post/meta', {item: item}) %>
+	</div>
+	<% } %>
+
+</div><!-- row -->
+<%- partial('post/comment_footer', {page: item}) %>

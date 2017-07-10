@@ -21,9 +21,9 @@ I have a hands-on experience with:
 3. **Node.js**: Express, MongoDB-driver for Node.js.
 4. **C#**: ASP.NET MVC\WEB API 2.0, console application-tools.
 5. **DataBase**: SQL, MySQL, MongoDB.
-6. **Automation**: Grunt, Bash, Batch, Git, TFS.
+6. **Automation**: Grunt, Gulp, Webpack, PowerShell, Bash, Batch, Git, TFS.
 7. **Front-End**: ES5\ES6, TypeScript, Angular1\2, Ext.js, D3.js, Google APIs.
 
 Of course, not all technologies were listed above, because in the last time software development is a fast-growing sphere and a lot of new frameworks, tools, languages that become leaders and solve an existing problem a much better.
 
-<div align="right" class="highlighter-file-title">Updated: 25.08.2016</div>
+<div align="right" class="highlighter-file-title">Updated: 10.07.2017</div>

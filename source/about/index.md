@@ -17,12 +17,13 @@ Technologies which I use at the moment and want improve:
 I have a hands-on experience with:
 
 1. **OS**: Windows XP\7\10, Linux(Ubuntu).
-2. **Python**: Flask, Bottle, PyMongo.
-3. **Node.js**: Express, MongoDB-driver for Node.js.
-4. **C#**: ASP.NET MVC\WEB API 2.0, console application-tools.
-5. **DataBase**: SQL, MySQL, MongoDB.
-6. **Automation**: Grunt, Gulp, Webpack, PowerShell, Bash, Batch, Git, TFS.
-7. **Front-End**: ES5\ES6, TypeScript, Angular1\2, Ext.js, D3.js, Google APIs.
+2. **Node.js**: Express, MongoDB-driver for Node.js.
+3. **C#**: ASP.NET MVC\WEB API 2.0, console application-tools.
+4. **Python**: Flask, Bottle, PyMongo.
+5. **Golang**: basic theory, simple programs.
+6. **DataBase**: SQL, MySQL, MongoDB.
+7. **Automation**: Grunt, Gulp, Webpack, PowerShell, Bash, Batch, Git, TFS.
+8. **Front-End**: ES5\ES6, TypeScript, Angular1\2, Ext.js, D3.js, Google APIs.
 
 Of course, not all technologies were listed above, because in the last time software development is a fast-growing sphere and a lot of new frameworks, tools, languages that become leaders and solve an existing problem a much better.
 

@@ -1,0 +1,17 @@
+<footer class="footer">
+	<div class="container footer__container flex">
+		{{ partial "footer_links.html" . }}
+		<div class="footer__copyright">
+			&copy; {{ now.Format "2006" }} {{ .Site.Params.copyright | default .Site.Title }}.
+			<!-- <span class="footer__copyright-credits">{{ T "footer_credits" | safeHTML }}</span> -->
+			<span id="p-load-time"></span>
+		</div>
+	</div>
+</footer>
+
+<script>
+	window.onload = () => {
+    const loadTime = (window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart) / 1000;
+    document.getElementById("p-load-time").innerText = `Load time: ${loadTime.toFixed(3)} seconds`;
+  }
+</script>

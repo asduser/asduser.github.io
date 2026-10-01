@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>C# on Another Software Developer</title>
+		<link>http://localhost:1313/tags/c%23/</link>
+		<description>Recent content in C# on Another Software Developer</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 25 Aug 2016 21:35:25 +0200</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/c%23/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Bitwise Operations - Practical explanation</title>
+				<link>http://localhost:1313/post/theory/2016/btw_opts/</link>
+				<pubDate>Thu, 25 Aug 2016 21:35:25 +0200</pubDate>
+				<guid>http://localhost:1313/post/theory/2016/btw_opts/</guid>
+				<description>&lt;p&gt;Powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.&lt;/p&gt;&#xA;&lt;p&gt;A bit Wiki theory: &lt;a href=&#34;https://en.wikipedia.org/wiki/Bitwise_operation&#34;&gt;https://en.wikipedia.org/wiki/Bitwise_operation&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;So, let&amp;rsquo;s start! Assume, we have a number &lt;strong&gt;93&lt;/strong&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitwise Operations - Practical explanation - Another Software Developer</title>
+<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name="description" content="How to manipulate data at the individual bit level">
+    <meta property="og:url" content="http://localhost:1313/post/theory/2016/btw_opts-copy/">
+	<meta property="og:site_name" content="Another Software Developer">
+	<meta property="og:title" content="Bitwise Operations - Practical explanation">
+	<meta property="og:description" content="How to manipulate data at the individual bit level">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2016-08-25T21:35:25+02:00">
+		<meta property="article:modified_time" content="2016-08-25T21:35:25+02:00">
+		<meta property="article:tag" content="C#">
+		<meta property="article:tag" content="Ts">
+
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Bitwise Operations - Practical explanation">
+	<meta name="twitter:description" content="How to manipulate data at the individual bit level">
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/v2-styles.css">
+
+
+    
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Another Software Developer" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Another Software Developer</div>
+					<div class="logo__tagline">Network programming, performance, security</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-label="Menu" aria-expanded="false">
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+  </button>
+
+  <div class="menu__overlay"></div>
+
+  <ul class="menu__list desktop-menu">
+        <li class="menu__item">
+          <a class="menu__link" href="/post/">Archive</a>
+          
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="/publications/">Publications</a>
+          
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="/about/">About</a>
+          
+        </li>
+  </ul>
+
+  <div class="menu__drawer">
+    <div class="menu__drawer-header">
+      <span class="menu__drawer-title">Menu</span>
+      <button class="menu__close" aria-label="Close menu">
+        <span class="menu__close-icon">×</span>
+      </button>
+    </div>
+    <ul class="menu__list mobile-menu">
+          <li class="menu__item">
+            <a class="menu__link" href="/post/">Archive</a>
+            
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href="/publications/">Publications</a>
+            
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href="/about/">About</a>
+            
+          </li>
+    </ul>
+  </div>
+</nav>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Bitwise Operations - Practical explanation</h1>
+			<div style="text-align: right;">
+				Estimated reading time: 4 minutes
+			</div>
+			<p class="post__lead">How to manipulate data at the individual bit level</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2016-08-25T21:35:25&#43;02:00">August 25, 2016</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/theory/" rel="category">Theory</a>
+	</span>
+</div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>Powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.</p>
+<p>A bit Wiki theory: <a href="https://en.wikipedia.org/wiki/Bitwise_operation">https://en.wikipedia.org/wiki/Bitwise_operation</a></p>
+<p>So, let&rsquo;s start! Assume, we have a number <strong>93</strong>.</p>
+<blockquote>
+<p>Number: 93.</p>
+</blockquote>
+<p><strong>Step 0</strong>.</p>
+<p>93 in binary system is 1011101.<br/></p>
+<p><strong>TS:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">1011101</span>, <span style="color:#d3869b">2</span>) ) <span style="color:#928374;font-style:italic">// -&gt; 93.
+</span></span></span></code></pre></div><p><strong>C#:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Console.WriteLine( Convert.ToInt32(<span style="color:#b8bb26">&#34;1011101&#34;</span>, <span style="color:#d3869b">2</span>) ) <span style="color:#928374;font-style:italic">// -&gt; 93.</span>
+</span></span></code></pre></div><p><strong>Step 1</strong>.</p>
+<p>Due to using operator &ldquo;&raquo;&rdquo; in expression 93 &raquo; 1, we tell compiler to do a bit shift for 1 symbol, thus or number 93 will be transformed into 46.</p>
+<p><strong>TS:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">101110</span>, <span style="color:#d3869b">2</span>) <span style="color:#fe8019">==</span> <span style="color:#d3869b">93</span> <span style="color:#fe8019">&gt;&gt;</span> <span style="color:#d3869b">1</span>) <span style="color:#928374;font-style:italic">// -&gt; true.
+</span></span></span></code></pre></div><p><strong>C#:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Console.WriteLine( <span style="color:#d3869b">93</span> &gt;&gt; <span style="color:#d3869b">1</span> == Convert.ToInt32(<span style="color:#b8bb26">&#34;101110&#34;</span>, <span style="color:#d3869b">2</span>) ) <span style="color:#928374;font-style:italic">// -&gt; true.</span>
+</span></span></code></pre></div><p><strong>Clarification</strong>:</p>
+<blockquote>
+<p>1011101 -&gt; 93. <br/>
+101110 -&gt; 46.</p>
+</blockquote>
+<p>All existing numbers have to be shifted into right side for 1 sign.
+So, it means that 1st number will be on the second place, 2nd on the 3rd etc, but the last number leaves collection.
+As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
+<p><strong>Step 2</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 2 == 46 &raquo; 1</em> -&gt; 23.</p>
+</blockquote>
+<p><strong>Step 3</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 3 == 46 &raquo; 2 == 23 &raquo; 1</em> -&gt; 11.</p>
+</blockquote>
+<p><strong>Step 4</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 4 == 46 &raquo; 3 == 23 &raquo; 2 == 11 &raquo; 1</em> -&gt; 5.</p>
+</blockquote>
+<p><strong>Step 5</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 5 == 46 &raquo; 4 == 23 &raquo; 3 == 11 &raquo; 2 == 5 &raquo; 1</em> -&gt; 2.</p>
+</blockquote>
+<p><strong>Step 6</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 6 == 46 &raquo; 5 == 23 &raquo; 4 == 11 &raquo; 3 == 5 &raquo; 2 == 2 &raquo; 1</em> -&gt; 1.</p>
+</blockquote>
+<p><strong>Step 7</strong>.</p>
+<blockquote>
+<p><em>93 &raquo; 7 == 46 &raquo; 6 == 23 &raquo; 5 == 11 &raquo; 4 == 5 &raquo; 3 == 2 &raquo; 2 == 1 &raquo; 1</em> -&gt; 0.</p>
+</blockquote>
+<p>So, we had a 7 iterations, thereafter the last received sign is zero. All next bit shift operation can&rsquo;t change that and we&rsquo;ll have a sign 0 all the time.</p>
+<h3 id="shift-to-left">Shift to left.</h3>
+<p>It is completely opposite to previous method. Compiler will add a 1 sign into the start, which increases the number.</p>
+<p>Number: 1.</p>
+<p><strong>Step 0</strong>.</p>
+<p>How we did that? First of all, you have to understand the principle of representation the numbers in binary system. See a table below:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric system</th>
+					<th>Binary system</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>11</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>100</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>101</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>110</td>
+			</tr>
+	</tbody>
+</table>
+<p>etc .</p>
+<p>So, when we use operator <em>&laquo;</em> and apply it for number 1, the result will be 2 because we have a bits shift to left.</p>
+<p><strong>Step 1</strong>.</p>
+<blockquote>
+<p><em>1 &laquo; 1</em> -&gt; <b style="color:green;">2</b>.</p>
+</blockquote>
+<p><strong>Step 2</strong>.</p>
+<blockquote>
+<p><em>2 &laquo; 1</em> -&gt; 4.</p>
+</blockquote>
+<p><strong>Step 3 (a consistent shift)</strong>.</p>
+<blockquote>
+<p><em>1 &laquo; 1 &laquo; 1</em> -&gt; 4.</p>
+</blockquote>
+<p>Let&rsquo;s check that in C# compiler:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Console.WriteLine(Convert.ToString(<span style="color:#d3869b">4</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// get a binary system representation</span>
+</span></span><span style="display:flex;"><span>Console.WriteLine(Convert.ToInt32(<span style="color:#b8bb26">&#34;100&#34;</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// convert number into metric system</span>
+</span></span><span style="display:flex;"><span>Console.WriteLine(<span style="color:#d3869b">1</span> &lt;&lt; <span style="color:#d3869b">1</span> &lt;&lt; <span style="color:#d3869b">1</span> == Convert.ToInt32(<span style="color:#b8bb26">&#34;100&#34;</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// compare results</span>
+</span></span></code></pre></div><h3 id="bitwise-and-">Bitwise AND (&amp;).</h3>
+<p>Now let&rsquo;s talk about common expression task - bitwise and. According to code above, there is no a new principles, just only another representational behaviour.</p>
+<p>Supposably, we want to use and operator to numbers 5 and 7. So, here is a bits transformation:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric system</th>
+					<th>Position 3</th>
+					<th>Position 2</th>
+					<th>Position 1</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>Let&rsquo;s change numbers and now we&rsquo;re having 9 and 5:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric system</th>
+					<th>Position 4</th>
+					<th>Position 3</th>
+					<th>Position 2</th>
+					<th>Position 1</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>9</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>Check it using TypeScript:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">101</span>, <span style="color:#d3869b">2</span>) <span style="color:#fe8019">&amp;</span> <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">111</span>, <span style="color:#d3869b">2</span>) ); <span style="color:#928374;font-style:italic">// -&gt; 5
+</span></span></span><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">1001</span>, <span style="color:#d3869b">2</span>) <span style="color:#fe8019">&amp;</span> <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">101</span>, <span style="color:#d3869b">2</span>) ); <span style="color:#928374;font-style:italic">// -&gt; 1
+</span></span></span></code></pre></div><h3 id="bitwise-or-">Bitwise OR (|).</h3>
+<p>In this case all combinations return 1 except 0 &amp; 0. Example:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Position 1</th>
+					<th>Position 2</th>
+					<th>Result</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>Supposably, we use OR operator with numbers 7 and 5, so compiler does the following actions:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric system</th>
+					<th>Position 3</th>
+					<th>Position 2</th>
+					<th>Position 1</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bitwise-exclusive-or-">Bitwise Exclusive OR (^).</h3>
+<p>Only different signs return &ldquo;1&rdquo;, so there are [0 - 1], [1 - 0] combinations, in other cases will returned &ldquo;0&rdquo;.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric system</th>
+					<th>Position 3</th>
+					<th>Position 2</th>
+					<th>Position 1</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bitwise-not-">Bitwise Not (~).</h3>
+<p>Replaces each sign to opposite, [0 - 1], [1 - 0].</p>
+<table>
+	<thead>
+			<tr>
+					<th>Sign</th>
+					<th>Result</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bitwise-shift-left-">Bitwise Shift Left (&laquo;).</h3>
+<p>This operation is almost equals to the multiplication an existing number by 2. In other words, if we have a number 24 and we have to change it using left shift for 2 signs, will be enough use 2 times multiplication it by 2.</p>
+<blockquote>
+<p><em>24 &laquo; 2</em> -&gt; 96.</p>
+</blockquote>
+<h3 id="conclusion">Conclusion.</h3>
+<p>We have discussed about bitwise shift in programming languages. It happens when you work with computer memory, use high-load performance application or integrate your scenarios into the low-level programming.</p>
+<p><em>To be continued&hellip;</em></p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M4 0h8s2 0 4 2l15 15s2 2 0 4L21 31s-2 2-4 0L2 16s-2-2-2-4V3s0-3 4-3m3 10a3 3 0 0 0 0-6 3 3 0 0 0 0 6"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c/" rel="tag">c#</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ts/" rel="tag">ts</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/post/theory/2016/btw_opts/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Bitwise Operations - Practical explanation</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			
+			
+  			
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2026 Another Software Developer.
+			
+			<span id="p-load-time"></span>
+		</div>
+	</div>
+</footer>
+
+<script>
+	window.onload = () => {
+    const loadTime = (window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart) / 1000;
+    document.getElementById("p-load-time").innerText = `Load time: ${loadTime.toFixed(3)} seconds`;
+  }
+</script>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+</body>
+</html>

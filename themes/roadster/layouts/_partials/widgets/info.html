@@ -1,0 +1,39 @@
+<div class="widget-recent widget">
+	<h4 class="widget__title">Social</h4>
+	<div class="widget__content">
+    <div style="width: 100%; display: flex; gap: 2%; justify-content: space-between;">
+      <div class="widget-social__item widget__item" style="width: 50%">
+        <a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/asduser" target="_blank">
+          <!-- {{ partial "svg/github.svg" (dict "class" "widget-social__link-icon") }} -->
+           <img src="https://img.shields.io/github/followers/asduser" alt="Github asduser follow">
+        </a>
+      </div>
+      <div class="widget-social__item widget__item" style="width: 50%">
+        <a class="widget-social__link widget__link btn" title="LinkedIn" rel="noopener noreferrer" href="https://ua.linkedin.com/in/devthor" target="_blank">
+          {{ partial "svg/linkedin.svg" (dict "class" "widget-social__link-icon") }}
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+    <!-- <div>
+      <iframe src="https://ghbtns.com/github-btn.html?user=asduser&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+    </div> -->
+	</div>
+</div>
+
+<!-- TODO: mb del -->
+<!-- <p id="followers-count">Loading followers...</p> -->
+<!-- <script>
+  const username = "asduser";
+  const apiUrl = `https://api.github.com/users/${username}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const followersCount = data.followers;
+      document.getElementById('followers-count').textContent = `${followersCount} Followers`;
+    })
+    .catch(error => {
+      document.getElementById('followers-count').textContent = 'Unable to load followers count';
+    });
+</script> -->

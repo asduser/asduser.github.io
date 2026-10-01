@@ -104,9 +104,6 @@ Certifications Title MCPS: Microsoft Certified Professional Issuer Microsoft Dat
 	<article class="post">
 		<header class="post__header">
 			<h1 class="post__title">About Page</h1>
-			<div style="text-align: right;">
-				Estimated reading time: 1 minutes
-			</div>
 			
 		</header>
 		<div class="content post__content clearfix">
@@ -257,6 +254,23 @@ Certifications Title MCPS: Microsoft Certified Professional Issuer Microsoft Dat
   }
 </script>
 	</div>
+	<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+	<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+		<path d="M12 5l-7 7h4.5v7h5v-7H19z" fill="currentColor"/>
+	</svg>
+</button>
+<script>
+(function () {
+	var btn = document.getElementById('back-to-top');
+	window.addEventListener('scroll', function () {
+		btn.classList.toggle('back-to-top--visible', window.scrollY > 300);
+	}, { passive: true });
+	btn.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+})();
+</script>
+
 <script async defer src="/js/menu.js"></script>
 
 </body>

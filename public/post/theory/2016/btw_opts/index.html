@@ -104,7 +104,7 @@
 		<header class="post__header">
 			<h1 class="post__title">Bitwise Operations - Practical explanation</h1>
 			<div style="text-align: right;">
-				Estimated reading time: 4 minutes
+				<svg class="meta__icon reading-time__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg>Estimated reading time: 4 minutes
 			</div>
 			<p class="post__lead">How to manipulate data at the individual bit level</p>
 			<div class="post__meta meta">
@@ -466,6 +466,23 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
   }
 </script>
 	</div>
+	<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+	<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+		<path d="M12 5l-7 7h4.5v7h5v-7H19z" fill="currentColor"/>
+	</svg>
+</button>
+<script>
+(function () {
+	var btn = document.getElementById('back-to-top');
+	window.addEventListener('scroll', function () {
+		btn.classList.toggle('back-to-top--visible', window.scrollY > 300);
+	}, { passive: true });
+	btn.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+})();
+</script>
+
 <script async defer src="/js/menu.js"></script>
 
 </body>

@@ -279,3 +279,38 @@
     order: 0;
   }
 }
+/* Back to top button */
+.back-to-top {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 1000;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	background: #000;
+	color: #fff;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .2s, visibility .2s, background .2s;
+}
+.back-to-top--visible {
+	opacity: 1;
+	visibility: visible;
+}
+.back-to-top:hover,
+.back-to-top:focus-visible {
+	background: #e22d30;
+}
+
+/* Reading time icon */
+.reading-time__icon {
+	width: 18px;
+	height: 16px;
+}

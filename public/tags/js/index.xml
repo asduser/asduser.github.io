@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Js on Another Software Developer</title>
+		<link>http://localhost:1313/tags/js/</link>
+		<description>Recent content in Js on Another Software Developer</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 13 Jul 2016 14:14:13 +0200</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/js/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>XMPP Messaging - first experience</title>
+				<link>http://localhost:1313/post/research/xmpp/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/post/research/xmpp/</guid>
+				<description>&lt;p&gt;XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999. A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.&lt;/p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

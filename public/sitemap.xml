@@ -6,22 +6,22 @@
   </url><url>
     <loc>http://localhost:1313/publications/</loc>
   </url><url>
-    <loc>http://localhost:1313/post/theory/2016/btw_opts/</loc>
+    <loc>http://localhost:1313/blog/theory/2016/btw_opts/</loc>
     <lastmod>2016-08-25T21:35:25+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/research/xmpp/</loc>
+    <loc>http://localhost:1313/blog/research/xmpp/</loc>
     <lastmod>2016-07-13T14:14:13+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2016-08-25T21:35:25+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2016-08-25T21:35:25+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/c%23/</loc>
     <lastmod>2016-08-25T21:35:25+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2016-08-25T21:35:25+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
     <lastmod>2016-08-25T21:35:25+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>

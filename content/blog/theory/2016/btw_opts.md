@@ -9,6 +9,7 @@ pager: true
 weight: 2
 tags: ["c#", "ts"]
 categories: ["theory"]
+aliases: ["/post/theory/2016/btw_opts/"]
 ---
 
 Powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.

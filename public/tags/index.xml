@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on Another Software Developer</title>
+		<link>http://localhost:1313/tags/</link>
+		<description>Recent content in Tags on Another Software Developer</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 25 Aug 2016 21:35:25 +0200</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>C#</title>
+				<link>http://localhost:1313/tags/c%23/</link>
+				<pubDate>Thu, 25 Aug 2016 21:35:25 +0200</pubDate>
+				<guid>http://localhost:1313/tags/c%23/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ts</title>
+				<link>http://localhost:1313/tags/ts/</link>
+				<pubDate>Thu, 25 Aug 2016 21:35:25 +0200</pubDate>
+				<guid>http://localhost:1313/tags/ts/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Chat</title>
+				<link>http://localhost:1313/tags/chat/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/chat/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Js</title>
+				<link>http://localhost:1313/tags/js/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/js/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Message</title>
+				<link>http://localhost:1313/tags/message/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/message/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Protocol</title>
+				<link>http://localhost:1313/tags/protocol/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/protocol/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Stanza</title>
+				<link>http://localhost:1313/tags/stanza/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/stanza/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Strophe.js</title>
+				<link>http://localhost:1313/tags/strophe.js/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/strophe.js/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Web-Chat</title>
+				<link>http://localhost:1313/tags/web-chat/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/web-chat/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Xmpp</title>
+				<link>http://localhost:1313/tags/xmpp/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/tags/xmpp/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

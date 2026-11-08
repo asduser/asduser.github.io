@@ -20,5 +20,12 @@
 				<guid>http://localhost:1313/categories/theory/</guid>
 				<description></description>
 			</item>
+			<item>
+				<title>Practice</title>
+				<link>http://localhost:1313/categories/practice/</link>
+				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
+				<guid>http://localhost:1313/categories/practice/</guid>
+				<description></description>
+			</item>
 	</channel>
 </rss>

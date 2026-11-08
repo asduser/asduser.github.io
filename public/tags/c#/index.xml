@@ -14,7 +14,7 @@
 		
 			<atom:link href="http://localhost:1313/tags/c%23/index.xml" rel="self" type="application/rss+xml" />
 			<item>
-				<title>Bitwise Operations - Practical explanation</title>
+				<title>Bitwise Operations - practical explanation for beginners</title>
 				<link>http://localhost:1313/post/theory/2016/btw_opts/</link>
 				<pubDate>Thu, 25 Aug 2016 21:35:25 +0200</pubDate>
 				<guid>http://localhost:1313/post/theory/2016/btw_opts/</guid>

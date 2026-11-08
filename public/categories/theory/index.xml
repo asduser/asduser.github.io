@@ -14,18 +14,11 @@
 		
 			<atom:link href="http://localhost:1313/categories/theory/index.xml" rel="self" type="application/rss+xml" />
 			<item>
-				<title>Bitwise Operations - Practical explanation</title>
+				<title>Bitwise Operations - practical explanation for beginners</title>
 				<link>http://localhost:1313/post/theory/2016/btw_opts/</link>
 				<pubDate>Thu, 25 Aug 2016 21:35:25 +0200</pubDate>
 				<guid>http://localhost:1313/post/theory/2016/btw_opts/</guid>
 				<description>&lt;p&gt;Powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.&lt;/p&gt;&#xA;&lt;p&gt;A bit Wiki theory: &lt;a href=&#34;https://en.wikipedia.org/wiki/Bitwise_operation&#34;&gt;https://en.wikipedia.org/wiki/Bitwise_operation&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;So, let&amp;rsquo;s start! Assume, we have a number &lt;strong&gt;93&lt;/strong&gt;.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>XMPP Messaging - first experience</title>
-				<link>http://localhost:1313/post/research/xmpp/</link>
-				<pubDate>Wed, 13 Jul 2016 14:14:13 +0200</pubDate>
-				<guid>http://localhost:1313/post/research/xmpp/</guid>
-				<description>&lt;p&gt;XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999. A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.&lt;/p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>

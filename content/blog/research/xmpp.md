@@ -9,6 +9,7 @@ pager: true
 weight: 2
 tags: [xmpp, js, strophe.js, stanza, chat, web-chat, message, protocol]
 categories: ["practice"]
+aliases: ["/post/research/xmpp/"]
 ---
 
 XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.

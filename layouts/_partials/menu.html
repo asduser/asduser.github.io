@@ -1,0 +1,58 @@
+{{- /* Overrides themes/roadster/layouts/_partials/menu.html: marks the menu item
+       whose URL is a prefix of the current page path as active. */ -}}
+{{- $currentPath := .RelPermalink }}
+
+{{- define "submenu" }}
+  {{- if .HasChildren }}
+    <ul class="submenu">
+      {{- range .Children }}
+        <li class="submenu__item">
+          <a class="submenu__link" href="{{ .URL }}">{{ .Name }}</a>
+          {{ template "submenu" . }}
+        </li>
+      {{- end }}
+    </ul>
+  {{- end }}
+{{- end }}
+
+{{- define "menuitems" }}
+  {{- $currentPath := .currentPath }}
+  {{- range .items }}
+    {{- if not .Parent }}
+      {{- $url := .URL | relURL }}
+      {{- $active := and (ne $url "/") (hasPrefix $currentPath $url) }}
+      <li class="menu__item{{ if $active }} menu__item--active{{ end }}">
+        <a class="menu__link{{ if .HasChildren }} has-submenu{{ end }}" href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{ template "submenu" . }}
+      </li>
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- if .Site.Menus.main }}
+<nav class="menu">
+  <button class="menu__btn" aria-label="Menu" aria-expanded="false">
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+  </button>
+
+  <div class="menu__overlay"></div>
+
+  <ul class="menu__list desktop-menu">
+    {{- template "menuitems" (dict "items" .Site.Menus.main "currentPath" $currentPath) }}
+  </ul>
+
+  <div class="menu__drawer">
+    <div class="menu__drawer-header">
+      <span class="menu__drawer-title">Menu</span>
+      <button class="menu__close" aria-label="Close menu">
+        <span class="menu__close-icon">×</span>
+      </button>
+    </div>
+    <ul class="menu__list mobile-menu">
+      {{- template "menuitems" (dict "items" .Site.Menus.main "currentPath" $currentPath) }}
+    </ul>
+  </div>
+</nav>
+{{- end }}

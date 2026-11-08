@@ -12,8 +12,6 @@ enableEmoji = true
 [services]
   [services.googleAnalytics]
     id = 'G-MEASUREMENT_ID'  # Enable Google Analytics by entering your tracking id
-  [services.disqus]
-    shortname = 'your-disqus-shortname' # Enable Disqus by entering your Disqus shortname
 
 [markup.goldmark.renderer]
   unsafe = true
@@ -26,7 +24,7 @@ enableEmoji = true
   authorbox = true
   pager = true
   post_meta = ["date", "categories"]
-  mainSections = ["post", "docs", "pubs", "cv"]
+  mainSections = ["blog", "docs", "pubs", "cv"]
   CustomHeadHTML = "" # Add custom HTML in the <head> 
 
 [Params.author]
@@ -58,8 +56,8 @@ enableEmoji = true
   #   pageRef = '/'
   #   weight = 10
   [[menus.main]]
-    name = 'Archive'
-    pageRef = '/post'
+    name = 'Blog'
+    pageRef = '/blog'
     weight = 20
   [[menus.main]]
     name = 'Publications'

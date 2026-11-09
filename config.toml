@@ -7,7 +7,7 @@ enableEmoji = true
 
 # Configure Pagination. See https://gohugo.io/templates/pagination/#configuration
 [pagination]
-  pagerSize = 10 # (int) The number of pages per pager. Default is 10
+  pagerSize = 5 # (int) The number of pages per pager. Default is 5
 
 [services]
   [services.googleAnalytics]

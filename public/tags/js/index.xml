@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Wed, 13 Jul 2016 14:14:13 +0200</lastBuildDate>
+			<lastBuildDate>Tue, 08 Sep 2026 10:21:44 +0200</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/tags/js/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Manage PII sensetive values natively</title>
+				<link>http://localhost:1313/blog/security/pii_native/</link>
+				<pubDate>Tue, 08 Sep 2026 10:21:44 +0200</pubDate>
+				<guid>http://localhost:1313/blog/security/pii_native/</guid>
+				<description>&lt;p&gt;XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.&lt;/p&gt;&#xA;&lt;p&gt;A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>XMPP Messaging - first experience</title>
 				<link>http://localhost:1313/blog/research/xmpp/</link>

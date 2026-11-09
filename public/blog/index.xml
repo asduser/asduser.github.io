@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Thu, 25 Aug 2016 21:35:25 +0200</lastBuildDate>
+			<lastBuildDate>Sun, 08 Nov 2026 10:21:44 +0200</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Manage PII via Rust, Node.js natively</title>
+				<link>http://localhost:1313/blog/security/pii_native/</link>
+				<pubDate>Sun, 08 Nov 2026 10:21:44 +0200</pubDate>
+				<guid>http://localhost:1313/blog/security/pii_native/</guid>
+				<description>&lt;p&gt;XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.&lt;/p&gt;&#xA;&lt;p&gt;A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Bitwise Operations - practical explanation for beginners</title>
 				<link>http://localhost:1313/blog/theory/2016/btw_opts/</link>

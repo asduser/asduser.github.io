@@ -1,6 +1,6 @@
 ---
 date: 2016-08-25T21:35:25+02:00
-title: 'Bitwise Operations - practical explanation for beginners'
+title: 'Bitwise Operations - practical explanation'
 description: "How to manipulate data at the individual bit level"
 lead: "How to manipulate data at the individual bit level"
 authorbox: true

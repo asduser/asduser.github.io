@@ -1,0 +1,25 @@
+/* Self-linking headings in article content (see layouts/_markup/render-heading.html) */
+.content .heading-anchor,
+.content .heading-anchor:hover {
+	color: inherit;
+	font-weight: inherit;
+	text-decoration: none;
+}
+
+.content .heading-anchor::after {
+	content: "#";
+	margin-left: 0.35em;
+	color: #e22d30;
+	opacity: 0;
+	transition: opacity 0.15s;
+}
+
+.content .heading-anchor:hover::after,
+.content .heading-anchor:focus-visible::after {
+	opacity: 1;
+}
+
+/* Keep the heading clear of the top edge when jumped to */
+.content :is(h2, h3, h4, h5, h6)[id] {
+	scroll-margin-top: 20px;
+}

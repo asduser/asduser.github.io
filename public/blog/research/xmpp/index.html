@@ -32,7 +32,7 @@
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/v2-styles.css">
-
+<link rel="stylesheet" href="/css/custom.css">
 
     
 
@@ -108,7 +108,7 @@
 	<article class="post">
 		<header class="post__header">
 			<h1 class="post__title">XMPP Messaging - first experience</h1>
-			<div style="text-align: right;">
+			<div style="text-align: right; margin-top: 20px;">
 				<svg class="meta__icon reading-time__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg>Estimated reading time: 3 minutes
 			</div>
 			<p class="post__lead">XMPP messaging - how to work with web-chats and build cross-platform</p>
@@ -118,10 +118,30 @@
 	</span>
 </div></div>
 		</header>
-		<div class="content post__content clearfix">
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#setting-the-environment">Setting the environment</a></li>
+    <li><a href="#features">Features</a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#connection">Connection</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
 			<p>XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.</p>
 <p>A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">
+  <a class="heading-anchor" href="#overview">Overview</a>
+</h2>
 <p>I&rsquo;ve started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.</p>
 <p>To start using XMPP over HTTP you should communicate to <a href="https://xmpp.org/about/technology-overview.html#bosh">BOSH</a> - a specific over synchronous HTPP stream.</p>
 <p>Before we start talking about practical experience I&rsquo;d like to share with you useful links from official sites:</p>
@@ -131,14 +151,20 @@
 <li><a href="https://xmpp.org/about/faq.html">XMPP official FAQ</a> .</li>
 </ul>
 <p><img src="http://xiffian.sourceforge.net/Screenshots/Screenchat.jpg" alt="xmpp sample chat room"></p>
-<h2 id="setting-the-environment">Setting the environment</h2>
+<h2 id="setting-the-environment">
+  <a class="heading-anchor" href="#setting-the-environment">Setting the environment</a>
+</h2>
 <p>To start with you need to install and configure a server-side environment in according to official documentation. See list of public &amp; available servers - <a href="https://xmpp.org/software/servers.html">click here</a>.</p>
 <p>The next step - necessary to determine the client technology to work with XMPP protocol. <a href="https://xmpp.org/software/clients.html">See here</a></p>
 <p>You may create a any number of chatrooms, use a private\public conference, broadcast a specific events, accept notifications, transfer images, send smiles etc. It is only a small list of actual XMPP posibilities with whom I&rsquo;ve dealt.</p>
 <p>I was pleasantly surprised acknowledging an ability to work with offline messaging. You may specify a delay counter when your stanza should be delivered to your collocutor.</p>
-<h2 id="features">Features</h2>
+<h2 id="features">
+  <a class="heading-anchor" href="#features">Features</a>
+</h2>
 <p>The first thing is a format of XMPP messaging - XML stanzas. You may share you presence, build a different server requests but always should use XML elements in a strict respected format.</p>
-<h3 id="example">Example</h3>
+<h3 id="example">
+  <a class="heading-anchor" href="#example">Example</a>
+</h3>
 <p>Assume, client sends request to server:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#fb4934">&lt;iq</span> <span style="color:#b8bb26;font-weight:bold">from=</span><span style="color:#b8bb26">&#39;hag66@shakespeare.lit/pda&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">id=</span><span style="color:#b8bb26">&#39;h7ns81g&#39;</span>
@@ -164,11 +190,15 @@
 </ul>
 <p>I guess, it is cool, cause any developer may be sure that another one uses the same format to build requests. This approach prevents you to make prevalent mistakes or make them less and significantly save your time.</p>
 <p><img src="http://blog.armorgames.com/wp-content/uploads/2015/09/chat_room_tab2.png" alt="xmpp sample chat room"></p>
-<h3 id="connection">Connection</h3>
+<h3 id="connection">
+  <a class="heading-anchor" href="#connection">Connection</a>
+</h3>
 <p>Throughout all session the client will have a list of event emitters, where each of them depends on some appropriate external event.</p>
 <p>For example, you connected to the chat-room and if there is some participant, he would be informed by special information stanza.</p>
 <p>When you leave room, write a message, join group or send invite - all this actions raise proper broadcasts. You may subscribe to person, configure chat-rooms, manage your contact list and more another cool features.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">
+  <a class="heading-anchor" href="#conclusion">Conclusion</a>
+</h2>
 <p>XMPP - is a cool technology for messaging. If you need to use web-chat and be sure that it will work on cross-platform devices, the choise is clear. Of course, it not only one suitable library to broadcast messages over the browser and any person may use whatever he wants.</p>
 <p>In the next time I&rsquo;ll try to share with you some cases of using XMPP.</p>
 <p>Good luck!</p>

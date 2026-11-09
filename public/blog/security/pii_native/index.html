@@ -32,7 +32,7 @@
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/v2-styles.css">
-
+<link rel="stylesheet" href="/css/custom.css">
 
     
 
@@ -118,11 +118,30 @@
 	</span>
 </div></div>
 		</header>
-		<div class="content post__content clearfix">
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#nodejs-implementation">Node.js implementation</a>
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#where-to-avoid-it">Where to avoid it</a></li>
+      </ul>
+    </li>
+    <li><a href="#rust-implementation">Rust implementation</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
 			<p>Sometimes you need to hide sensitive data (password, login, secret key, user&rsquo;s pii etc.) within an application level.</p>
 <p>There are a lot of different tools which already handle that. I prefer vault as best for such purpose.</p>
 <p>Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.</p>
-<h2 id="nodejs-implementation">Node.js implementation</h2>
+<h2 id="nodejs-implementation">
+  <a class="heading-anchor" href="#nodejs-implementation">Node.js implementation</a>
+</h2>
 <p>This is the same idea as <code>Rust’s</code> secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, <code>console.log</code>, <code>JSON.stringify</code>, or an error message built with string interpolation:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">import</span> { inspect } <span style="color:#fe8019">from</span> <span style="color:#b8bb26">&#34;node:util&#34;</span>;
 </span></span><span style="display:flex;"><span>
@@ -151,7 +170,9 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The <code>#private</code> field matters here, because it keeps the value out of <code>Object.keys</code>, spread, and structural inspection. <code>expose()</code> then becomes the one place to audit in code review.</p>
 <p>This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.</p>
-<h3 id="examples">Examples</h3>
+<h3 id="examples">
+  <a class="heading-anchor" href="#examples">Examples</a>
+</h3>
 <p>Let&rsquo;s play a bit:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">const</span> s <span style="color:#fe8019">=</span> <span style="color:#fe8019">new</span> Secret(<span style="color:#b8bb26">&#34;host_name&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// getting raw value
@@ -160,7 +181,9 @@
 </span></span><span style="display:flex;"><span>console.log(<span style="color:#b8bb26">`</span><span style="color:#b8bb26">${</span>s<span style="color:#b8bb26">}</span><span style="color:#b8bb26">`</span>); <span style="color:#928374;font-style:italic">// [REDACTED1]
 </span></span></span><span style="display:flex;"><span>console.log(JSON.stringify(s)); <span style="color:#928374;font-style:italic">// &#34;[REDACTED2]&#34;
 </span></span></span><span style="display:flex;"><span>console.log(s); <span style="color:#928374;font-style:italic">// Secret([REDACTED3])
-</span></span></span></code></pre></div><h3 id="where-to-avoid-it">Where to avoid it</h3>
+</span></span></span></code></pre></div><h3 id="where-to-avoid-it">
+  <a class="heading-anchor" href="#where-to-avoid-it">Where to avoid it</a>
+</h3>
 <ol>
 <li>
 <p><strong>Don’t put</strong> logic or <code>I/O</code> in <code>toString()</code>. Implicit coercion happens in surprising places, so it must be cheap, pure, and never throw.</p>
@@ -176,7 +199,9 @@
 </li>
 </ol>
 <p>In short, <code>toString()</code> and <code>toJSON()</code> are for this value has one obvious textual form, <code>inspect.custom</code> is for developer ergonomics, and all three are your best defense against secrets leaking through incidental printing.</p>
-<h2 id="rust-implementation">Rust implementation</h2>
+<h2 id="rust-implementation">
+  <a class="heading-anchor" href="#rust-implementation">Rust implementation</a>
+</h2>
 <p>Let&rsquo;s assume we have a project structure (for testing purpose of PII native usage):</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>secret/
 </span></span><span style="display:flex;"><span>├── Cargo.toml
@@ -260,7 +285,9 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, serde_json::to_string(<span style="color:#fe8019">&amp;</span>cfg).unwrap());
 </span></span><span style="display:flex;"><span>    <span style="color:#928374;font-style:italic">// Read the value directly
 </span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;expose(): </span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, cfg.api_key.expose());
-</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+</span></span></code></pre></div><h2 id="conclusion">
+  <a class="heading-anchor" href="#conclusion">Conclusion</a>
+</h2>
 <p>We researched a way how to handle natively via Rust or Node.js secret values to not expose sensitive info outside.</p>
 <p>Use it for API keys, DB passwords in config, tokens, and PII fields.</p>
 <p>Note: i still prefer for more complex stages use Vault as a mechanism to work with PII.</p>

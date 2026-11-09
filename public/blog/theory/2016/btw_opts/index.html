@@ -28,7 +28,7 @@
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/v2-styles.css">
-
+<link rel="stylesheet" href="/css/custom.css">
 
     
 
@@ -114,7 +114,27 @@
 	</span>
 </div></div>
 		</header>
-		<div class="content post__content clearfix">
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#shift-to-left">Shift to left.</a></li>
+        <li><a href="#bitwise-and-">Bitwise AND (&amp;).</a></li>
+        <li><a href="#bitwise-or-">Bitwise OR (|).</a></li>
+        <li><a href="#bitwise-exclusive-or-">Bitwise Exclusive OR (^).</a></li>
+        <li><a href="#bitwise-not-">Bitwise Not (~).</a></li>
+        <li><a href="#bitwise-shift-left-">Bitwise Shift Left (&laquo;).</a></li>
+        <li><a href="#conclusion">Conclusion.</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
 			<p>Powerful thing, which allows you significantly increase a performance in multiplying, addition and dividing numbers.</p>
 <p>A bit Wiki theory: <a href="https://en.wikipedia.org/wiki/Bitwise_operation">https://en.wikipedia.org/wiki/Bitwise_operation</a></p>
 <p>So, let&rsquo;s start! Assume, we have a number <strong>93</strong>.</p>
@@ -166,7 +186,9 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 <p><em>93 &raquo; 7 == 46 &raquo; 6 == 23 &raquo; 5 == 11 &raquo; 4 == 5 &raquo; 3 == 2 &raquo; 2 == 1 &raquo; 1</em> -&gt; 0.</p>
 </blockquote>
 <p>So, we had a 7 iterations, thereafter the last received sign is zero. All next bit shift operation can&rsquo;t change that and we&rsquo;ll have a sign 0 all the time.</p>
-<h3 id="shift-to-left">Shift to left.</h3>
+<h3 id="shift-to-left">
+  <a class="heading-anchor" href="#shift-to-left">Shift to left.</a>
+</h3>
 <p>It is completely opposite to previous method. Compiler will add a 1 sign into the start, which increases the number.</p>
 <p>Number: 1.</p>
 <p><strong>Step 0</strong>.</p>
@@ -227,7 +249,9 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Console.WriteLine(Convert.ToString(<span style="color:#d3869b">4</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// get a binary system representation</span>
 </span></span><span style="display:flex;"><span>Console.WriteLine(Convert.ToInt32(<span style="color:#b8bb26">&#34;100&#34;</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// convert number into metric system</span>
 </span></span><span style="display:flex;"><span>Console.WriteLine(<span style="color:#d3869b">1</span> &lt;&lt; <span style="color:#d3869b">1</span> &lt;&lt; <span style="color:#d3869b">1</span> == Convert.ToInt32(<span style="color:#b8bb26">&#34;100&#34;</span>, <span style="color:#d3869b">2</span>)); <span style="color:#928374;font-style:italic">// compare results</span>
-</span></span></code></pre></div><h3 id="bitwise-and-">Bitwise AND (&amp;).</h3>
+</span></span></code></pre></div><h3 id="bitwise-and-">
+  <a class="heading-anchor" href="#bitwise-and-">Bitwise AND (&amp;).</a>
+</h3>
 <p>Now let&rsquo;s talk about common expression task - bitwise and. According to code above, there is no a new principles, just only another representational behaviour.</p>
 <p>Supposably, we want to use and operator to numbers 5 and 7. So, here is a bits transformation:</p>
 <table>
@@ -298,7 +322,9 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 <p>Check it using TypeScript:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">101</span>, <span style="color:#d3869b">2</span>) <span style="color:#fe8019">&amp;</span> <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">111</span>, <span style="color:#d3869b">2</span>) ); <span style="color:#928374;font-style:italic">// -&gt; 5
 </span></span></span><span style="display:flex;"><span>console.log( <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">1001</span>, <span style="color:#d3869b">2</span>) <span style="color:#fe8019">&amp;</span> <span style="color:#fabd2f">parseInt</span>(<span style="color:#d3869b">101</span>, <span style="color:#d3869b">2</span>) ); <span style="color:#928374;font-style:italic">// -&gt; 1
-</span></span></span></code></pre></div><h3 id="bitwise-or-">Bitwise OR (|).</h3>
+</span></span></span></code></pre></div><h3 id="bitwise-or-">
+  <a class="heading-anchor" href="#bitwise-or-">Bitwise OR (|).</a>
+</h3>
 <p>In this case all combinations return 1 except 0 &amp; 0. Example:</p>
 <table>
 	<thead>
@@ -362,7 +388,9 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 			</tr>
 	</tbody>
 </table>
-<h3 id="bitwise-exclusive-or-">Bitwise Exclusive OR (^).</h3>
+<h3 id="bitwise-exclusive-or-">
+  <a class="heading-anchor" href="#bitwise-exclusive-or-">Bitwise Exclusive OR (^).</a>
+</h3>
 <p>Only different signs return &ldquo;1&rdquo;, so there are [0 - 1], [1 - 0] combinations, in other cases will returned &ldquo;0&rdquo;.</p>
 <table>
 	<thead>
@@ -394,7 +422,9 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 			</tr>
 	</tbody>
 </table>
-<h3 id="bitwise-not-">Bitwise Not (~).</h3>
+<h3 id="bitwise-not-">
+  <a class="heading-anchor" href="#bitwise-not-">Bitwise Not (~).</a>
+</h3>
 <p>Replaces each sign to opposite, [0 - 1], [1 - 0].</p>
 <table>
 	<thead>
@@ -414,12 +444,16 @@ As you see we had a last number &ldquo;1&rdquo;, but it have to be removed.</p>
 			</tr>
 	</tbody>
 </table>
-<h3 id="bitwise-shift-left-">Bitwise Shift Left (&laquo;).</h3>
+<h3 id="bitwise-shift-left-">
+  <a class="heading-anchor" href="#bitwise-shift-left-">Bitwise Shift Left (&laquo;).</a>
+</h3>
 <p>This operation is almost equals to the multiplication an existing number by 2. In other words, if we have a number 24 and we have to change it using left shift for 2 signs, will be enough use 2 times multiplication it by 2.</p>
 <blockquote>
 <p><em>24 &laquo; 2</em> -&gt; 96.</p>
 </blockquote>
-<h3 id="conclusion">Conclusion.</h3>
+<h3 id="conclusion">
+  <a class="heading-anchor" href="#conclusion">Conclusion.</a>
+</h3>
 <p>We have discussed about bitwise shift in programming languages. It happens when you work with computer memory, use high-load performance application or integrate your scenarios into the low-level programming.</p>
 <p><em>To be continued&hellip;</em></p>
 		</div>

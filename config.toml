@@ -21,10 +21,12 @@ enableEmoji = true
   opengraph = true
   twitter_cards = true
   readmore = true
+  toc = true # Table of contents on articles (disable per page with `toc: false`)
   authorbox = true
   pager = true
   post_meta = ["date", "categories"]
   mainSections = ["blog", "docs", "pubs", "cv"]
+  customCSS = ["css/custom.css"]
   CustomHeadHTML = "" # Add custom HTML in the <head> 
 
 [Params.author]
@@ -49,6 +51,10 @@ enableEmoji = true
 [markup]
   [markup.highlight]
     style = "gruvbox"
+  [markup.tableOfContents]
+    startLevel = 2 # ##
+    endLevel = 4   # ####
+    ordered = false
 
 [menus]
   # [[menus.main]]

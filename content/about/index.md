@@ -3,6 +3,7 @@ title: "About Page"
 sidebar: true
 weight: 1
 pager: false
+toc: false
 ---
 
 Hello there :wave:,

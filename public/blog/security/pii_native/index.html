@@ -109,7 +109,7 @@
 		<header class="post__header">
 			<h1 class="post__title">Manage PII via Rust, Node.js natively</h1>
 			<div style="text-align: right; margin-top: 20px;">
-				<svg class="meta__icon reading-time__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg>Estimated reading time: 3 minutes
+				<svg class="meta__icon reading-time__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg>Estimated reading time: 4 minutes
 			</div>
 			<p class="post__lead">How to manage sensitive data natively by using Rust, Node.js</p>
 			<div class="post__meta meta">
@@ -122,7 +122,7 @@
 			<p>Sometimes you need to hide sensitive data (password, login, secret key, user&rsquo;s pii etc.) within an application level.</p>
 <p>There are a lot of different tools which already handle that. I prefer vault as best for such purpose.</p>
 <p>Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.</p>
-<h2 id="nodejs">Node.js</h2>
+<h2 id="nodejs-implementation">Node.js implementation</h2>
 <p>This is the same idea as <code>Rust’s</code> secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, <code>console.log</code>, <code>JSON.stringify</code>, or an error message built with string interpolation:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">import</span> { inspect } <span style="color:#fe8019">from</span> <span style="color:#b8bb26">&#34;node:util&#34;</span>;
 </span></span><span style="display:flex;"><span>
@@ -149,8 +149,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;Secret([REDACTED])&#34;</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Use it for API keys, DB passwords in config, tokens, and PII fields.</p>
-<p>The <code>#private</code> field matters here, because it keeps the value out of <code>Object.keys</code>, spread, and structural inspection. <code>expose()</code> then becomes the one place to audit in code review.</p>
+</span></span></code></pre></div><p>The <code>#private</code> field matters here, because it keeps the value out of <code>Object.keys</code>, spread, and structural inspection. <code>expose()</code> then becomes the one place to audit in code review.</p>
 <p>This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.</p>
 <h3 id="examples">Examples</h3>
 <p>Let&rsquo;s play a bit:</p>
@@ -177,40 +176,95 @@
 </li>
 </ol>
 <p>In short, <code>toString()</code> and <code>toJSON()</code> are for this value has one obvious textual form, <code>inspect.custom</code> is for developer ergonomics, and all three are your best defense against secrets leaking through incidental printing.</p>
-<h3 id="example">Example</h3>
-<p>Assume, client sends request to server:</p>
-<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#fb4934">&lt;iq</span> <span style="color:#b8bb26;font-weight:bold">from=</span><span style="color:#b8bb26">&#39;hag66@shakespeare.lit/pda&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">id=</span><span style="color:#b8bb26">&#39;h7ns81g&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">to=</span><span style="color:#b8bb26">&#39;shakespeare.lit&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">type=</span><span style="color:#b8bb26">&#39;get&#39;</span><span style="color:#fb4934">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#fb4934">&lt;query</span> <span style="color:#b8bb26;font-weight:bold">xmlns=</span><span style="color:#b8bb26">&#39;http://jabber.org/protocol/disco#items&#39;</span><span style="color:#fb4934">/&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#fb4934">&lt;/iq&gt;</span>
-</span></span></code></pre></div><p>And immediately will be informed by appropriate response:</p>
-<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#fb4934">&lt;iq</span> <span style="color:#b8bb26;font-weight:bold">from=</span><span style="color:#b8bb26">&#39;shakespeare.lit&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">id=</span><span style="color:#b8bb26">&#39;h7ns81g&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">to=</span><span style="color:#b8bb26">&#39;hag66@shakespeare.lit/pda&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#b8bb26;font-weight:bold">type=</span><span style="color:#b8bb26">&#39;result&#39;</span><span style="color:#fb4934">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#fb4934">&lt;query</span> <span style="color:#b8bb26;font-weight:bold">xmlns=</span><span style="color:#b8bb26">&#39;http://jabber.org/protocol/disco#items&#39;</span><span style="color:#fb4934">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#fb4934">&lt;item</span> <span style="color:#b8bb26;font-weight:bold">jid=</span><span style="color:#b8bb26">&#39;chat.shakespeare.lit&#39;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#b8bb26;font-weight:bold">name=</span><span style="color:#b8bb26">&#39;Chatroom Service&#39;</span><span style="color:#fb4934">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#fb4934">&lt;/query&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#fb4934">&lt;/iq&gt;</span>
-</span></span></code></pre></div><p>There are a lot of libraries to build a proper messages - you should just specify a list of arguments &amp; values.</p>
-<p>One of the most popular JS libraries to work with XMPP are:</p>
-<ul>
-<li><a href="https://github.com/strophe/strophejs">Strophe.js</a></li>
-<li><a href="https://github.com/legastero/stanza.io">Stanza.io</a>.</li>
-</ul>
-<p>I guess, it is cool, cause any developer may be sure that another one uses the same format to build requests. This approach prevents you to make prevalent mistakes or make them less and significantly save your time.</p>
-<p><img src="http://blog.armorgames.com/wp-content/uploads/2015/09/chat_room_tab2.png" alt="xmpp sample chat room"></p>
-<h3 id="connection">Connection</h3>
-<p>Throughout all session the client will have a list of event emitters, where each of them depends on some appropriate external event.</p>
-<p>For example, you connected to the chat-room and if there is some participant, he would be informed by special information stanza.</p>
-<p>When you leave room, write a message, join group or send invite - all this actions raise proper broadcasts. You may subscribe to person, configure chat-rooms, manage your contact list and more another cool features.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>XMPP - is a cool technology for messaging. If you need to use web-chat and be sure that it will work on cross-platform devices, the choise is clear. Of course, it not only one suitable library to broadcast messages over the browser and any person may use whatever he wants.</p>
-<p>In the next time I&rsquo;ll try to share with you some cases of using XMPP.</p>
-<p>Good luck!</p>
+<h2 id="rust-implementation">Rust implementation</h2>
+<p>Let&rsquo;s assume we have a project structure (for testing purpose of PII native usage):</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>secret/
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>└── src/
+</span></span><span style="display:flex;"><span>    ├── main.rs
+</span></span><span style="display:flex;"><span>    └── secret.rs
+</span></span></code></pre></div><p>Cargo.toml:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[package]
+</span></span><span style="display:flex;"><span>name = <span style="color:#b8bb26">&#34;secret-demo&#34;</span>
+</span></span><span style="display:flex;"><span>version = <span style="color:#b8bb26">&#34;0.1.0&#34;</span>
+</span></span><span style="display:flex;"><span>edition = <span style="color:#b8bb26">&#34;2021&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[dependencies]
+</span></span><span style="display:flex;"><span>serde = { version = <span style="color:#b8bb26">&#34;1&#34;</span>, features = [<span style="color:#b8bb26">&#34;derive&#34;</span>] }
+</span></span><span style="display:flex;"><span>serde_json = <span style="color:#b8bb26">&#34;1&#34;</span>
+</span></span></code></pre></div><p>Content of <code>secret.rs</code> (all our magic happens here):</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rs" data-lang="rs"><span style="display:flex;"><span><span style="color:#fe8019">use</span> serde::{Deserialize, Deserializer, Serialize, Serializer};
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> std::fmt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">pub</span> <span style="color:#fe8019">struct</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span>(T);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">pub</span> <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">new</span>(value: T) -&gt; Self {
+</span></span><span style="display:flex;"><span>        Secret(value)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#928374;font-style:italic">// The only way to read
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fe8019">pub</span> <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">expose</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>) -&gt; <span style="color:#fe8019">&amp;</span>T {
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>.<span style="color:#d3869b">0</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ toString(): used by `{}` in format!/println!, and by .to_string()
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> fmt::Display <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">fmt</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, f: <span style="color:#fe8019">&amp;</span>mut fmt::Formatter<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">&#39;_</span><span style="color:#fe8019">&gt;</span>) -&gt; fmt::<span style="color:#fabd2f">Result</span> {
+</span></span><span style="display:flex;"><span>        f.write_str(<span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ [inspect.custom]: used by `{:?}`, dbg!, assert_eq! failures, #[derive(Debug)] parents
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> fmt::Debug <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">fmt</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, f: <span style="color:#fe8019">&amp;</span>mut fmt::Formatter<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">&#39;_</span><span style="color:#fe8019">&gt;</span>) -&gt; fmt::<span style="color:#fabd2f">Result</span> {
+</span></span><span style="display:flex;"><span>        f.write_str(<span style="color:#b8bb26">&#34;Secret([REDACTED])&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ toJSON(): used by serde_json::to_string and any other serde format
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> Serialize <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">serialize</span><span style="color:#fe8019">&lt;</span>S: Serializer<span style="color:#fe8019">&gt;</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, serializer: S) -&gt; <span style="color:#fabd2f">Result</span><span style="color:#fe8019">&lt;</span>S::<span style="color:#fabd2f">Ok</span>, S::Error<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>        serializer.serialize_str(<span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span>, T: Deserialize<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;&gt;</span> Deserialize<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;</span> <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">deserialize</span><span style="color:#fe8019">&lt;</span>D: Deserializer<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;&gt;</span>(deserializer: D) -&gt; <span style="color:#fabd2f">Result</span><span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">Self</span>, D::Error<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>        T::deserialize(deserializer).map(Secret::new)
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>And the <code>main.rs</code> with execution examples:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rs" data-lang="rs"><span style="display:flex;"><span><span style="color:#fe8019">mod</span> <span style="color:#b8bb26">secret</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> secret::Secret;
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> serde::{Deserialize, Serialize};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8ec07c">#[derive(Debug, Serialize, Deserialize)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">struct</span> Config {
+</span></span><span style="display:flex;"><span>    host: <span style="color:#fabd2f">String</span>,
+</span></span><span style="display:flex;"><span>    api_key: Secret<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">String</span><span style="color:#fe8019">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">fn</span> <span style="color:#fabd2f">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">let</span> key <span style="color:#fe8019">=</span> Secret::new(<span style="color:#fabd2f">String</span>::from(<span style="color:#b8bb26">&#34;sk-live-123&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{key}</span><span style="color:#b8bb26">&#34;</span>);                    <span style="color:#928374;font-style:italic">// like `${key}`        -&gt; [REDACTED]
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, key.to_string());      <span style="color:#928374;font-style:italic">// like String(key)     -&gt; [REDACTED]
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{key:?}</span><span style="color:#b8bb26">&#34;</span>);                  <span style="color:#928374;font-style:italic">// like console.log     -&gt; Secret([REDACTED])
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, serde_json::to_string(<span style="color:#fe8019">&amp;</span>key).unwrap()); <span style="color:#928374;font-style:italic">// like JSON.stringify -&gt; &#34;[REDACTED]&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">let</span> cfg: Config <span style="color:#fe8019">=</span>
+</span></span><span style="display:flex;"><span>        serde_json::from_str(<span style="color:#b8bb26">r</span><span style="color:#b8bb26">#&#34;{&#34;host&#34;:&#34;api.example.com&#34;,&#34;api_key&#34;:&#34;sk-live-123&#34;}&#34;#</span>).unwrap();
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{cfg:?}</span><span style="color:#b8bb26">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, serde_json::to_string(<span style="color:#fe8019">&amp;</span>cfg).unwrap());
+</span></span><span style="display:flex;"><span>    <span style="color:#928374;font-style:italic">// Read the value directly
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;expose(): </span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, cfg.api_key.expose());
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>We researched a way how to handle natively via Rust or Node.js secret values to not expose sensitive info outside.</p>
+<p>Use it for API keys, DB passwords in config, tokens, and PII fields.</p>
+<p>Note: i still prefer for more complex stages use Vault as a mechanism to work with PII.</p>
+<p>Have fun!</p>
 		</div>
 		<footer class="post__footer">
 			

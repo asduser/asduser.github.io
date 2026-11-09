@@ -20,7 +20,7 @@ Meanwhile it may be a situation when your team do not need vault integration cau
 
 <!--more-->
 
-## Node.js
+## Node.js implementation
 
 This is the same idea as `Rust’s` secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, `console.log`, `JSON.stringify`, or an error message built with string interpolation:
 
@@ -52,8 +52,6 @@ export class Secret<T = string> {
 }
 ```
 
-Use it for API keys, DB passwords in config, tokens, and PII fields.
-
 The `#private` field matters here, because it keeps the value out of `Object.keys`, spread, and structural inspection. `expose()` then becomes the one place to audit in code review.
 
 This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.
@@ -84,57 +82,113 @@ console.log(s); // Secret([REDACTED3])
 
 In short, `toString()` and `toJSON()` are for this value has one obvious textual form, `inspect.custom` is for developer ergonomics, and all three are your best defense against secrets leaking through incidental printing.
 
+## Rust implementation
 
-### Example
+Let's assume we have a project structure (for testing purpose of PII native usage):
 
-Assume, client sends request to server:
-
-```xml
-<iq from='hag66@shakespeare.lit/pda'
-    id='h7ns81g'
-    to='shakespeare.lit'
-    type='get'>
-  <query xmlns='http://jabber.org/protocol/disco#items'/>
-</iq>
+```bash
+secret/
+├── Cargo.toml
+└── src/
+    ├── main.rs
+    └── secret.rs
 ```
 
-And immediately will be informed by appropriate response:
+Cargo.toml:
 
-```xml
-<iq from='shakespeare.lit'
-    id='h7ns81g'
-    to='hag66@shakespeare.lit/pda'
-    type='result'>
-  <query xmlns='http://jabber.org/protocol/disco#items'>
-    <item jid='chat.shakespeare.lit'
-          name='Chatroom Service'/>
-  </query>
-</iq>
+```toml
+[package]
+name = "secret-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
 ```
 
-There are a lot of libraries to build a proper messages - you should just specify a list of arguments & values.
+Content of `secret.rs` (all our magic happens here):
 
-One of the most popular JS libraries to work with XMPP are: 
+```rs
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::fmt;
 
-- [Strophe.js](https://github.com/strophe/strophejs)
-- [Stanza.io](https://github.com/legastero/stanza.io).
+pub struct Secret<T>(T);
 
-I guess, it is cool, cause any developer may be sure that another one uses the same format to build requests. This approach prevents you to make prevalent mistakes or make them less and significantly save your time.
+impl<T> Secret<T> {
+    pub fn new(value: T) -> Self {
+        Secret(value)
+    }
 
-![xmpp sample chat room](http://blog.armorgames.com/wp-content/uploads/2015/09/chat_room_tab2.png)
+    // The only way to read
+    pub fn expose(&self) -> &T {
+        &self.0
+    }
+}
 
-### Connection
+// ≈ toString(): used by `{}` in format!/println!, and by .to_string()
+impl<T> fmt::Display for Secret<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("[REDACTED]")
+    }
+}
 
-Throughout all session the client will have a list of event emitters, where each of them depends on some appropriate external event.
+// ≈ [inspect.custom]: used by `{:?}`, dbg!, assert_eq! failures, #[derive(Debug)] parents
+impl<T> fmt::Debug for Secret<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("Secret([REDACTED])")
+    }
+}
 
-For example, you connected to the chat-room and if there is some participant, he would be informed by special information stanza.
+// ≈ toJSON(): used by serde_json::to_string and any other serde format
+impl<T> Serialize for Secret<T> {
+    fn serialize<S: Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        serializer.serialize_str("[REDACTED]")
+    }
+}
 
-When you leave room, write a message, join group or send invite - all this actions raise proper broadcasts. You may subscribe to person, configure chat-rooms, manage your contact list and more another cool features.
+impl<'de, T: Deserialize<'de>> Deserialize<'de> for Secret<T> {
+    fn deserialize<D: Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        T::deserialize(deserializer).map(Secret::new)
+    }
+```
+
+And the `main.rs` with execution examples:
+
+```rs
+mod secret;
+
+use secret::Secret;
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Serialize, Deserialize)]
+struct Config {
+    host: String,
+    api_key: Secret<String>,
+}
+
+fn main() {
+    let key = Secret::new(String::from("sk-live-123"));
+
+    println!("{key}");                    // like `${key}`        -> [REDACTED]
+    println!("{}", key.to_string());      // like String(key)     -> [REDACTED]
+    println!("{key:?}");                  // like console.log     -> Secret([REDACTED])
+    println!("{}", serde_json::to_string(&key).unwrap()); // like JSON.stringify -> "[REDACTED]"
+
+    let cfg: Config =
+        serde_json::from_str(r#"{"host":"api.example.com","api_key":"sk-live-123"}"#).unwrap();
+    println!("{cfg:?}");
+    println!("{}", serde_json::to_string(&cfg).unwrap());
+    // Read the value directly
+    println!("expose(): {}", cfg.api_key.expose());
+```
 
 ## Conclusion
 
-XMPP - is a cool technology for messaging. If you need to use web-chat and be sure that it will work on cross-platform devices, the choise is clear. Of course, it not only one suitable library to broadcast messages over the browser and any person may use whatever he wants.
+We researched a way how to handle natively via Rust or Node.js secret values to not expose sensitive info outside.
 
-In the next time I'll try to share with you some cases of using XMPP. 
+Use it for API keys, DB passwords in config, tokens, and PII fields.
 
-Good luck! 
+Note: i still prefer for more complex stages use Vault as a mechanism to work with PII.
+
+Have fun!

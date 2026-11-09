@@ -52,7 +52,38 @@ export class Secret<T = string> {
 }
 ```
 
-Use it for API keys, DB passwords in config, tokens, and PII fields. The #private field matters here, because it keeps the value out of Object.keys, spread, and structural inspection. expose() then becomes the one place to audit in code review. This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.
+Use it for API keys, DB passwords in config, tokens, and PII fields.
+
+The `#private` field matters here, because it keeps the value out of `Object.keys`, spread, and structural inspection. `expose()` then becomes the one place to audit in code review.
+
+This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.
+
+### Examples
+
+Let's play a bit:
+
+```ts
+const s = new Secret("host_name");
+// getting raw value
+console.log(s.expose());
+
+console.log(`${s}`); // [REDACTED1]
+console.log(JSON.stringify(s)); // "[REDACTED2]"
+console.log(s); // Secret([REDACTED3])
+```
+
+### Where to avoid it
+
+1. **Don’t put** logic or `I/O` in `toString()`. Implicit coercion happens in surprising places, so it must be cheap, pure, and never throw.
+
+2. **Avoid** `Symbol.toPrimitive`/`valueOf` tricks that make objects work with `+` or `<`. `a` + `b` on two Money objects would quietly give you string concatenation or float math. Explicit methods like `a.add(b)` and `a.compare(b)` are safer and type-check properly. Libraries like decimal.js deliberately take that approach.
+
+3. **Don’t rely** on `toString()` for anything that gets parsed back. Give round-trip formats an explicit `format()`/`parse()` pair, or a static `fromJSON()`.
+
+4. **Don’t use** it for identity or equality. Comparing `String(a) === String(b)` is a *code smell*. Add an explicit equals().
+
+In short, `toString()` and `toJSON()` are for this value has one obvious textual form, `inspect.custom` is for developer ergonomics, and all three are your best defense against secrets leaking through incidental printing.
+
 
 ### Example
 

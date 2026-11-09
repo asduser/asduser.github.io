@@ -3,8 +3,8 @@
 	<article class="post">
 		<header class="post__header">
 			<h1 class="post__title">{{ .Title }}</h1>
-			{{- if eq .Section "post" }}
-			<div style="text-align: right;">
+			{{- if eq .Section "blog" }}
+			<div style="text-align: right; margin-top: 20px;">
 				{{ partial "svg/time.svg" (dict "class" "meta__icon reading-time__icon") -}}
 				{{ printf "Estimated reading time: %d minutes" .ReadingTime }}
 			</div>

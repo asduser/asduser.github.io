@@ -1,8 +1,8 @@
 ---
 date: 2026-11-08T10:21:44+02:00
 title: 'Manage PII via Rust, Node.js natively'
-description: "How to manage sensetive data natively by using Rust, Node.js"
-lead: "How to manage sensetive data natively by using Rust, Node.js"
+description: "How to manage sensitive data natively by using Rust, Node.js"
+lead: "How to manage sensitive data natively by using Rust, Node.js"
 authorbox: true
 sidebar: false
 pager: true
@@ -12,39 +12,47 @@ categories: ["practice", "security"]
 aliases: ["/post/security/pii_native/"]
 ---
 
-XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.
+Sometimes you need to hide sensitive data (password, login, secret key, user's pii etc.) within an application level.
 
-A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.
+There are a lot of different tools which already handle that. I prefer vault as best for such purpose.
+
+Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.
 
 <!--more-->
 
-## Overview
+## Node.js
 
-I've started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.
+This is the same idea as `Rust’s` secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, `console.log`, `JSON.stringify`, or an error message built with string interpolation:
 
-To start using XMPP over HTTP you should communicate to [BOSH](https://xmpp.org/about/technology-overview.html#bosh) - a specific over synchronous HTPP stream.
+```ts
+import { inspect } from "node:util";
 
-Before we start talking about practical experience I'd like to share with you useful links from official sites:
+export class Secret<T = string> {
+  
+  private readonly #value: T;
+  
+  public constructor(value: T) {
+    this.#value = value;
+  }
 
-- [XMPP strengths](https://en.wikipedia.org/wiki/XMPP#Strengths) 
-- [XMPP weaknesses](https://en.wikipedia.org/wiki/XMPP#Weaknesses) 
-- [XMPP official FAQ](https://xmpp.org/about/faq.html) .
+  public expose(): T { return this.#value; }
 
-![xmpp sample chat room](http://xiffian.sourceforge.net/Screenshots/Screenchat.jpg)
+  public toString(): string {
+    return "[REDACTED]";
+  
+  }
 
-## Setting the environment
+  public toJSON() {
+    return "[REDACTED]";
+  }
 
-To start with you need to install and configure a server-side environment in according to official documentation. See list of public & available servers - [click here](https://xmpp.org/software/servers.html).
+  [inspect.custom]() {
+    return "Secret([REDACTED])";
+  }
+}
+```
 
-The next step - necessary to determine the client technology to work with XMPP protocol. [See here](https://xmpp.org/software/clients.html) 
-
-You may create a any number of chatrooms, use a private\public conference, broadcast a specific events, accept notifications, transfer images, send smiles etc. It is only a small list of actual XMPP posibilities with whom I've dealt.
-
-I was pleasantly surprised acknowledging an ability to work with offline messaging. You may specify a delay counter when your stanza should be delivered to your collocutor.
-
-## Features
-
-The first thing is a format of XMPP messaging - XML stanzas. You may share you presence, build a different server requests but always should use XML elements in a strict respected format.
+Use it for API keys, DB passwords in config, tokens, and PII fields. The #private field matters here, because it keeps the value out of Object.keys, spread, and structural inspection. expose() then becomes the one place to audit in code review. This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.
 
 ### Example
 

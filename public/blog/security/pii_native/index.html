@@ -3,11 +3,11 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manage PII via Rust, Node.js natively - Another Software Developer</title>
-<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name="description" content="How to manage sensetive data natively by using Rust, Node.js">
+<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name="description" content="How to manage sensitive data natively by using Rust, Node.js">
     <meta property="og:url" content="http://localhost:1313/blog/security/pii_native/">
 	<meta property="og:site_name" content="Another Software Developer">
 	<meta property="og:title" content="Manage PII via Rust, Node.js natively">
-	<meta property="og:description" content="How to manage sensetive data natively by using Rust, Node.js">
+	<meta property="og:description" content="How to manage sensitive data natively by using Rust, Node.js">
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="blog">
@@ -23,7 +23,7 @@
     
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Manage PII via Rust, Node.js natively">
-	<meta name="twitter:description" content="How to manage sensetive data natively by using Rust, Node.js">
+	<meta name="twitter:description" content="How to manage sensitive data natively by using Rust, Node.js">
 
 
 <link rel="shortcut icon" href="/favicon.ico">
@@ -108,7 +108,7 @@
 	<article class="post">
 		<header class="post__header">
 			<h1 class="post__title">Manage PII via Rust, Node.js natively</h1>
-			<p class="post__lead">How to manage sensetive data natively by using Rust, Node.js</p>
+			<p class="post__lead">How to manage sensitive data natively by using Rust, Node.js</p>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2026-11-08T10:21:44&#43;02:00">November 08, 2026</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/practice/" rel="category">Practice</a>, <a class="meta__link" href="/categories/security/" rel="category">Security</a>
@@ -116,25 +116,37 @@
 </div></div>
 		</header>
 		<div class="content post__content clearfix">
-			<p>XMPP - Extensible Messaging and Presence Protocol, which streams different XML stanzas over a network. It was developed in 1998 and official shared in 1999.</p>
-<p>A lot of helpful services, technologies and tools were designed by XMPP standard and they exist today.</p>
-<h2 id="overview">Overview</h2>
-<p>I&rsquo;ve started use XMPP 2 weeks ago and I absolutely had no idea how it works before. So, my first impression - it is a huge and tremendous technology, which truly can solve a wide range of messaging issues.</p>
-<p>To start using XMPP over HTTP you should communicate to <a href="https://xmpp.org/about/technology-overview.html#bosh">BOSH</a> - a specific over synchronous HTPP stream.</p>
-<p>Before we start talking about practical experience I&rsquo;d like to share with you useful links from official sites:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/XMPP#Strengths">XMPP strengths</a></li>
-<li><a href="https://en.wikipedia.org/wiki/XMPP#Weaknesses">XMPP weaknesses</a></li>
-<li><a href="https://xmpp.org/about/faq.html">XMPP official FAQ</a> .</li>
-</ul>
-<p><img src="http://xiffian.sourceforge.net/Screenshots/Screenchat.jpg" alt="xmpp sample chat room"></p>
-<h2 id="setting-the-environment">Setting the environment</h2>
-<p>To start with you need to install and configure a server-side environment in according to official documentation. See list of public &amp; available servers - <a href="https://xmpp.org/software/servers.html">click here</a>.</p>
-<p>The next step - necessary to determine the client technology to work with XMPP protocol. <a href="https://xmpp.org/software/clients.html">See here</a></p>
-<p>You may create a any number of chatrooms, use a private\public conference, broadcast a specific events, accept notifications, transfer images, send smiles etc. It is only a small list of actual XMPP posibilities with whom I&rsquo;ve dealt.</p>
-<p>I was pleasantly surprised acknowledging an ability to work with offline messaging. You may specify a delay counter when your stanza should be delivered to your collocutor.</p>
-<h2 id="features">Features</h2>
-<p>The first thing is a format of XMPP messaging - XML stanzas. You may share you presence, build a different server requests but always should use XML elements in a strict respected format.</p>
+			<p>Sometimes you need to hide sensitive data (password, login, secret key, user&rsquo;s pii etc.) within an application level.</p>
+<p>There are a lot of different tools which already handle that. I prefer vault as best for such purpose.</p>
+<p>Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.</p>
+<h2 id="nodejs">Node.js</h2>
+<p>This is the same idea as <code>Rust’s</code> secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, <code>console.log</code>, <code>JSON.stringify</code>, or an error message built with string interpolation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">import</span> { inspect } <span style="color:#fe8019">from</span> <span style="color:#b8bb26">&#34;node:util&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">export</span> <span style="color:#fe8019">class</span> Secret&lt;<span style="color:#fb4934">T</span> = <span style="color:#b8bb26;font-weight:bold">string</span>&gt; {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">private</span> <span style="color:#fe8019">readonly</span> #value: <span style="color:#fabd2f">T</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> <span style="color:#fe8019">constructor</span>(value: <span style="color:#fabd2f">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">this</span>.#value <span style="color:#fe8019">=</span> value;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> expose()<span style="color:#fe8019">:</span> T { <span style="color:#fe8019">return</span> <span style="color:#fe8019">this</span>.#value; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> toString()<span style="color:#fe8019">:</span> <span style="color:#fabd2f">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> toJSON() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [inspect.custom]() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;Secret([REDACTED])&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Use it for API keys, DB passwords in config, tokens, and PII fields. The #private field matters here, because it keeps the value out of Object.keys, spread, and structural inspection. expose() then becomes the one place to audit in code review. This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.</p>
 <h3 id="example">Example</h3>
 <p>Assume, client sends request to server:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#fb4934">&lt;iq</span> <span style="color:#b8bb26;font-weight:bold">from=</span><span style="color:#b8bb26">&#39;hag66@shakespeare.lit/pda&#39;</span>

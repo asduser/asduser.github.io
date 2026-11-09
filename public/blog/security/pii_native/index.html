@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manage PII via Rust, Node.js natively - Another Software Developer</title>
+<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name="description" content="How to manage sensitive data natively by using Rust, Node.js">
+    <meta property="og:url" content="http://localhost:1313/blog/security/pii_native/">
+	<meta property="og:site_name" content="Another Software Developer">
+	<meta property="og:title" content="Manage PII via Rust, Node.js natively">
+	<meta property="og:description" content="How to manage sensitive data natively by using Rust, Node.js">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="blog">
+		<meta property="article:published_time" content="2026-11-08T10:21:44+02:00">
+		<meta property="article:modified_time" content="2026-11-08T10:21:44+02:00">
+		<meta property="article:tag" content="Js">
+		<meta property="article:tag" content="Ts">
+		<meta property="article:tag" content="Node.js">
+		<meta property="article:tag" content="Pii">
+		<meta property="article:tag" content="Security">
+		<meta property="article:tag" content="Rust">
+
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Manage PII via Rust, Node.js natively">
+	<meta name="twitter:description" content="How to manage sensitive data natively by using Rust, Node.js">
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/v2-styles.css">
+
+
+    
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Another Software Developer" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Another Software Developer</div>
+					<div class="logo__tagline">Network programming, performance, security</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+  <button class="menu__btn" aria-label="Menu" aria-expanded="false">
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+    <span class="menu__btn-line"></span>
+  </button>
+
+  <div class="menu__overlay"></div>
+
+  <ul class="menu__list desktop-menu">
+      <li class="menu__item menu__item--active">
+        <a class="menu__link" href="/blog/" aria-current="page">Blog</a>
+        
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="/publications/">Publications</a>
+        
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="/about/">About</a>
+        
+      </li>
+  </ul>
+
+  <div class="menu__drawer">
+    <div class="menu__drawer-header">
+      <span class="menu__drawer-title">Menu</span>
+      <button class="menu__close" aria-label="Close menu">
+        <span class="menu__close-icon">×</span>
+      </button>
+    </div>
+    <ul class="menu__list mobile-menu">
+      <li class="menu__item menu__item--active">
+        <a class="menu__link" href="/blog/" aria-current="page">Blog</a>
+        
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="/publications/">Publications</a>
+        
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="/about/">About</a>
+        
+      </li>
+    </ul>
+  </div>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Manage PII via Rust, Node.js natively</h1>
+			<div style="text-align: right; margin-top: 20px;">
+				<svg class="meta__icon reading-time__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg>Estimated reading time: 4 minutes
+			</div>
+			<p class="post__lead">How to manage sensitive data natively by using Rust, Node.js</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2026-11-08T10:21:44&#43;02:00">November 08, 2026</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/practice/" rel="category">Practice</a>, <a class="meta__link" href="/categories/security/" rel="category">Security</a>
+	</span>
+</div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>Sometimes you need to hide sensitive data (password, login, secret key, user&rsquo;s pii etc.) within an application level.</p>
+<p>There are a lot of different tools which already handle that. I prefer vault as best for such purpose.</p>
+<p>Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.</p>
+<h2 id="nodejs-implementation">Node.js implementation</h2>
+<p>This is the same idea as <code>Rust’s</code> secrecy crate. You wrap sensitive values so that no accidental path can print them, whether that’s a template literal, <code>console.log</code>, <code>JSON.stringify</code>, or an error message built with string interpolation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">import</span> { inspect } <span style="color:#fe8019">from</span> <span style="color:#b8bb26">&#34;node:util&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">export</span> <span style="color:#fe8019">class</span> Secret&lt;<span style="color:#fb4934">T</span> = <span style="color:#b8bb26;font-weight:bold">string</span>&gt; {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">private</span> <span style="color:#fe8019">readonly</span> #value: <span style="color:#fabd2f">T</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> <span style="color:#fe8019">constructor</span>(value: <span style="color:#fabd2f">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">this</span>.#value <span style="color:#fe8019">=</span> value;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> expose()<span style="color:#fe8019">:</span> T { <span style="color:#fe8019">return</span> <span style="color:#fe8019">this</span>.#value; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> toString()<span style="color:#fe8019">:</span> <span style="color:#fabd2f">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fe8019">public</span> toJSON() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [inspect.custom]() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> <span style="color:#b8bb26">&#34;Secret([REDACTED])&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>#private</code> field matters here, because it keeps the value out of <code>Object.keys</code>, spread, and structural inspection. <code>expose()</code> then becomes the one place to audit in code review.</p>
+<p>This pays off because leaked credentials in logs and error trackers are still one of the most common incident sources.</p>
+<h3 id="examples">Examples</h3>
+<p>Let&rsquo;s play a bit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#fe8019">const</span> s <span style="color:#fe8019">=</span> <span style="color:#fe8019">new</span> Secret(<span style="color:#b8bb26">&#34;host_name&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// getting raw value
+</span></span></span><span style="display:flex;"><span>console.log(s.expose());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>console.log(<span style="color:#b8bb26">`</span><span style="color:#b8bb26">${</span>s<span style="color:#b8bb26">}</span><span style="color:#b8bb26">`</span>); <span style="color:#928374;font-style:italic">// [REDACTED1]
+</span></span></span><span style="display:flex;"><span>console.log(JSON.stringify(s)); <span style="color:#928374;font-style:italic">// &#34;[REDACTED2]&#34;
+</span></span></span><span style="display:flex;"><span>console.log(s); <span style="color:#928374;font-style:italic">// Secret([REDACTED3])
+</span></span></span></code></pre></div><h3 id="where-to-avoid-it">Where to avoid it</h3>
+<ol>
+<li>
+<p><strong>Don’t put</strong> logic or <code>I/O</code> in <code>toString()</code>. Implicit coercion happens in surprising places, so it must be cheap, pure, and never throw.</p>
+</li>
+<li>
+<p><strong>Avoid</strong> <code>Symbol.toPrimitive</code>/<code>valueOf</code> tricks that make objects work with <code>+</code> or <code>&lt;</code>. <code>a</code> + <code>b</code> on two Money objects would quietly give you string concatenation or float math. Explicit methods like <code>a.add(b)</code> and <code>a.compare(b)</code> are safer and type-check properly. Libraries like decimal.js deliberately take that approach.</p>
+</li>
+<li>
+<p><strong>Don’t rely</strong> on <code>toString()</code> for anything that gets parsed back. Give round-trip formats an explicit <code>format()</code>/<code>parse()</code> pair, or a static <code>fromJSON()</code>.</p>
+</li>
+<li>
+<p><strong>Don’t use</strong> it for identity or equality. Comparing <code>String(a) === String(b)</code> is a <em>code smell</em>. Add an explicit equals().</p>
+</li>
+</ol>
+<p>In short, <code>toString()</code> and <code>toJSON()</code> are for this value has one obvious textual form, <code>inspect.custom</code> is for developer ergonomics, and all three are your best defense against secrets leaking through incidental printing.</p>
+<h2 id="rust-implementation">Rust implementation</h2>
+<p>Let&rsquo;s assume we have a project structure (for testing purpose of PII native usage):</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>secret/
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>└── src/
+</span></span><span style="display:flex;"><span>    ├── main.rs
+</span></span><span style="display:flex;"><span>    └── secret.rs
+</span></span></code></pre></div><p>Cargo.toml:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[package]
+</span></span><span style="display:flex;"><span>name = <span style="color:#b8bb26">&#34;secret-demo&#34;</span>
+</span></span><span style="display:flex;"><span>version = <span style="color:#b8bb26">&#34;0.1.0&#34;</span>
+</span></span><span style="display:flex;"><span>edition = <span style="color:#b8bb26">&#34;2021&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[dependencies]
+</span></span><span style="display:flex;"><span>serde = { version = <span style="color:#b8bb26">&#34;1&#34;</span>, features = [<span style="color:#b8bb26">&#34;derive&#34;</span>] }
+</span></span><span style="display:flex;"><span>serde_json = <span style="color:#b8bb26">&#34;1&#34;</span>
+</span></span></code></pre></div><p>Content of <code>secret.rs</code> (all our magic happens here):</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rs" data-lang="rs"><span style="display:flex;"><span><span style="color:#fe8019">use</span> serde::{Deserialize, Deserializer, Serialize, Serializer};
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> std::fmt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">pub</span> <span style="color:#fe8019">struct</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span>(T);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">pub</span> <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">new</span>(value: T) -&gt; Self {
+</span></span><span style="display:flex;"><span>        Secret(value)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#928374;font-style:italic">// The only way to read
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fe8019">pub</span> <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">expose</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>) -&gt; <span style="color:#fe8019">&amp;</span>T {
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>.<span style="color:#d3869b">0</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ toString(): used by `{}` in format!/println!, and by .to_string()
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> fmt::Display <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">fmt</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, f: <span style="color:#fe8019">&amp;</span>mut fmt::Formatter<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">&#39;_</span><span style="color:#fe8019">&gt;</span>) -&gt; fmt::<span style="color:#fabd2f">Result</span> {
+</span></span><span style="display:flex;"><span>        f.write_str(<span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ [inspect.custom]: used by `{:?}`, dbg!, assert_eq! failures, #[derive(Debug)] parents
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> fmt::Debug <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">fmt</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, f: <span style="color:#fe8019">&amp;</span>mut fmt::Formatter<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">&#39;_</span><span style="color:#fe8019">&gt;</span>) -&gt; fmt::<span style="color:#fabd2f">Result</span> {
+</span></span><span style="display:flex;"><span>        f.write_str(<span style="color:#b8bb26">&#34;Secret([REDACTED])&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">// ≈ toJSON(): used by serde_json::to_string and any other serde format
+</span></span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> Serialize <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">serialize</span><span style="color:#fe8019">&lt;</span>S: Serializer<span style="color:#fe8019">&gt;</span>(<span style="color:#fe8019">&amp;</span><span style="color:#fabd2f">self</span>, serializer: S) -&gt; <span style="color:#fabd2f">Result</span><span style="color:#fe8019">&lt;</span>S::<span style="color:#fabd2f">Ok</span>, S::Error<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>        serializer.serialize_str(<span style="color:#b8bb26">&#34;[REDACTED]&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">impl</span><span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span>, T: Deserialize<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;&gt;</span> Deserialize<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;</span> <span style="color:#fe8019">for</span> Secret<span style="color:#fe8019">&lt;</span>T<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">fn</span> <span style="color:#fabd2f">deserialize</span><span style="color:#fe8019">&lt;</span>D: Deserializer<span style="color:#fe8019">&lt;</span><span style="color:#b8bb26;font-weight:bold">&#39;de</span><span style="color:#fe8019">&gt;&gt;</span>(deserializer: D) -&gt; <span style="color:#fabd2f">Result</span><span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">Self</span>, D::Error<span style="color:#fe8019">&gt;</span> {
+</span></span><span style="display:flex;"><span>        T::deserialize(deserializer).map(Secret::new)
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>And the <code>main.rs</code> with execution examples:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rs" data-lang="rs"><span style="display:flex;"><span><span style="color:#fe8019">mod</span> <span style="color:#b8bb26">secret</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> secret::Secret;
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">use</span> serde::{Deserialize, Serialize};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8ec07c">#[derive(Debug, Serialize, Deserialize)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">struct</span> Config {
+</span></span><span style="display:flex;"><span>    host: <span style="color:#fabd2f">String</span>,
+</span></span><span style="display:flex;"><span>    api_key: Secret<span style="color:#fe8019">&lt;</span><span style="color:#fabd2f">String</span><span style="color:#fe8019">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">fn</span> <span style="color:#fabd2f">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">let</span> key <span style="color:#fe8019">=</span> Secret::new(<span style="color:#fabd2f">String</span>::from(<span style="color:#b8bb26">&#34;sk-live-123&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{key}</span><span style="color:#b8bb26">&#34;</span>);                    <span style="color:#928374;font-style:italic">// like `${key}`        -&gt; [REDACTED]
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, key.to_string());      <span style="color:#928374;font-style:italic">// like String(key)     -&gt; [REDACTED]
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{key:?}</span><span style="color:#b8bb26">&#34;</span>);                  <span style="color:#928374;font-style:italic">// like console.log     -&gt; Secret([REDACTED])
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, serde_json::to_string(<span style="color:#fe8019">&amp;</span>key).unwrap()); <span style="color:#928374;font-style:italic">// like JSON.stringify -&gt; &#34;[REDACTED]&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">let</span> cfg: Config <span style="color:#fe8019">=</span>
+</span></span><span style="display:flex;"><span>        serde_json::from_str(<span style="color:#b8bb26">r</span><span style="color:#b8bb26">#&#34;{&#34;host&#34;:&#34;api.example.com&#34;,&#34;api_key&#34;:&#34;sk-live-123&#34;}&#34;#</span>).unwrap();
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{cfg:?}</span><span style="color:#b8bb26">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, serde_json::to_string(<span style="color:#fe8019">&amp;</span>cfg).unwrap());
+</span></span><span style="display:flex;"><span>    <span style="color:#928374;font-style:italic">// Read the value directly
+</span></span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">println!</span>(<span style="color:#b8bb26">&#34;expose(): </span><span style="color:#b8bb26">{}</span><span style="color:#b8bb26">&#34;</span>, cfg.api_key.expose());
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>We researched a way how to handle natively via Rust or Node.js secret values to not expose sensitive info outside.</p>
+<p>Use it for API keys, DB passwords in config, tokens, and PII fields.</p>
+<p>Note: i still prefer for more complex stages use Vault as a mechanism to work with PII.</p>
+<p>Have fun!</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M4 0h8s2 0 4 2l15 15s2 2 0 4L21 31s-2 2-4 0L2 16s-2-2-2-4V3s0-3 4-3m3 10a3 3 0 0 0 0-6 3 3 0 0 0 0 6"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/js/" rel="tag">js</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ts/" rel="tag">ts</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/node.js/" rel="tag">node.js</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/pii/" rel="tag">pii</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/security/" rel="tag">security</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rust/" rel="tag">rust</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blog/theory/2016/btw_opts/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Bitwise Operations - practical explanation for beginners</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			
+			
+  			
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2026 Another Software Developer.
+			
+			<span id="p-load-time"></span>
+		</div>
+	</div>
+</footer>
+
+<script>
+	window.onload = () => {
+    const loadTime = (window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart) / 1000;
+    document.getElementById("p-load-time").innerText = `Load time: ${loadTime.toFixed(3)} seconds`;
+  }
+</script>
+	</div>
+	<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+	<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+		<path d="M12 5l-7 7h4.5v7h5v-7H19z" fill="currentColor"/>
+	</svg>
+</button>
+<script>
+(function () {
+	var btn = document.getElementById('back-to-top');
+	window.addEventListener('scroll', function () {
+		btn.classList.toggle('back-to-top--visible', window.scrollY > 300);
+	}, { passive: true });
+	btn.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+})();
+</script>
+
+<script async defer src="/js/menu.js"></script>
+
+</body>
+</html>

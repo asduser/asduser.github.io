@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Rust on Another Software Developer</title>
+		<link>http://localhost:1313/tags/rust/</link>
+		<description>Recent content in Rust on Another Software Developer</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 08 Nov 2026 10:21:44 +0200</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Manage PII via Rust, Node.js natively</title>
+				<link>http://localhost:1313/blog/security/pii_native/</link>
+				<pubDate>Sun, 08 Nov 2026 10:21:44 +0200</pubDate>
+				<guid>http://localhost:1313/blog/security/pii_native/</guid>
+				<description>&lt;p&gt;Sometimes you need to hide sensitive data (password, login, secret key, user&amp;rsquo;s pii etc.) within an application level.&lt;/p&gt;&#xA;&lt;p&gt;There are a lot of different tools which already handle that. I prefer vault as best for such purpose.&lt;/p&gt;&#xA;&lt;p&gt;Meanwhile it may be a situation when your team do not need vault integration cause there is a simple script or tool which should just work.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

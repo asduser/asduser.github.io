@@ -16,9 +16,9 @@ Powerful thing, which allows you significantly increase a performance in multipl
 
 A bit Wiki theory: https://en.wikipedia.org/wiki/Bitwise_operation
 
-So, let's start! Assume, we have a number **93**.
-
 <!--more-->
+
+So, let's start! Assume, we have a number **93**.
 
 > Number: 93.
 
